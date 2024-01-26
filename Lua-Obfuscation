@@ -302,3 +302,113 @@ while getgenv().TpWalking and chr and hum and hum.Parent do
 end
 	end    
 })
+
+local Tab = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Touch all",
+	Callback = function()
+      		local plr = game.Players.LocalPlayer.Character.Head
+for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if v.Name == "TouchInterest" and v.Parent then
+        firetouchinterest(plr, v.Parent, 0)
+    end
+end
+  	end    
+})
+
+Tab:AddButton({
+	Name = "Kill all npcs",
+	Callback = function()
+      		sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 112412400000)
+sethiddenproperty(game.Players.LocalPlayer, "MaxSimulationRadius", 112412400000)
+for i,d in pairs(game.Workspace:GetDescendants()) do
+    if d.ClassName == 'Humanoid' and d.Parent.Name ~= game.Players.LocalPlayer.Name then
+        d.Health = 0
+    end
+end
+  	end    
+})
+
+Tab:AddDropdown({
+	Name = "Enable",
+	Default = "E",
+	Options = {"Enable reset", "Enable inventory", "Enable emotes", "Enable leaderboard", "Enable chat"},
+	Callback = function(Value)
+		if Value == "Enable reset" then
+		local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCore("ResetButtonCallback",true)
+end
+       if Value == "Enable inventory" then
+local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, true)
+end
+      if Value == "Enable emotes" then
+      game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, false)
+      end
+      if Value == "Enable leaderboard" then
+      sgui = game:GetService("StarterGui")
+sgui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true)
+end
+      if Value == "Enable chat" then
+      local sgui = game:GetService("StarterGui")
+sgui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, true)
+end
+	end    
+})
+
+Tab:AddButton({
+	Name = "Cbring",
+	Callback = function()
+      		local plr = game:GetService("Players").LocalPlayer
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    if v.ClassName == "Player" and v.Name ~= plr.Name then
+        if v.Character:FindFirstChild("HumanoidRootPart") then
+            v.Character.HumanoidRootPart.CFrame = CFrame.new(plr.Character.HumanoidRootPart.Position)
+        end
+    end
+end 
+  	end    
+})
+
+Tab:AddToggle({
+	Name = "Click all buttons",
+	Default = false,
+	Callback = function(Value)
+		game:GetService("CoreGui").PurchasePrompt.Enabled = false
+_G.Lag = Value
+while _G.Lag do
+for i,v in pairs(workspace:GetDescendants()) do
+   if v:IsA("ClickDetector") then
+    fireclickdetector(v)
+   end
+end
+  wait(1)
+  end
+	end    
+})
+
+Tab:AddDropdown({
+	Name = "Time set",
+	Default = "s",
+	Options = {"Day", "Night"},
+	Callback = function(Value)
+	       if Value == "Day" then
+	game.Lighting.TimeOfDay = "12.00"
+	end
+	      if Value == "Night" then
+	game.Lighting.TimeOfDay = "23.59"
+	end
+	end    
+})
+
+Tab:AddButton({
+ Name = "Anti afk",
+ Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/9QCyuc2p"))()
+   end    
+})
