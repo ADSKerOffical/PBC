@@ -266,3 +266,17 @@ end
 end
 	end    
 })
+
+Tab:AddButton({
+ Name = "Telekinesis",
+ Callback = function()
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/SAZXHUB/Control-update/main/README.md'),true))()
+   end    
+})
+
+Tab:AddButton({
+ Name = "Flip player",
+ Callback = function()
+        game.Players:Chat("/e flip")
+   end    
+})
