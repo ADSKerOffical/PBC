@@ -118,10 +118,112 @@ end
 	end    
 })
 
-Tab:AddButton({
+Tab:AddDropdown({
 	Name = "Multi gear",
-	Callback = function()
-      		lp = game:GetService("Players").LocalPlayer
+	Default = "m",
+	Options = {"Multi Roll (Press Z)", "Multi Soda (Press X)","Multi Burger (Press H)","Multi Pizza (Press J)","Multi Mop (Press R)","Multi Newspaper (Press O)","Multi gears (Press E)"},
+	Callback = function(Value)
+		if Value == "Multi Roll (Press Z)" then
+
+end
+        if Value == "Multi Roll (Press Z)" then
+lp = game:GetService("Players").LocalPlayer
+
+game:GetService("UserInputService").InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.Z then
+        for i, tool in pairs(lp.Backpack:GetChildren()) do
+            if tool:IsA("Tool") and tool.Name == "TpRoll" then
+                tool.Parent = lp.Character
+                tool:Activate()
+                task.wait()
+                tool.Parent = lp.Backpack
+            end
+        end
+    end
+end)
+end
+       if Value == "Multi Soda (Press X)" then
+lp = game:GetService("Players").LocalPlayer
+
+game:GetService("UserInputService").InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.X then
+        for i, tool in pairs(lp.Backpack:GetChildren()) do
+            if tool:IsA("Tool") and tool.Name == "Soda" then
+                tool.Parent = lp.Character
+                tool:Activate()
+                task.wait()
+                tool.Parent = lp.Backpack
+            end
+        end
+    end
+end)
+end
+      if Value == "Multi Burger (Press H)" then
+lp = game:GetService("Players").LocalPlayer
+
+game:GetService("UserInputService").InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.H then
+        for i, tool in pairs(lp.Backpack:GetChildren()) do
+            if tool:IsA("Tool") and tool.Name == "Burger" then
+                tool.Parent = lp.Character
+                tool:Activate()
+                task.wait()
+                tool.Parent = lp.Backpack
+            end
+        end
+    end
+end)
+end
+if Value == "Multi Pizza (Press J)" then
+lp = game:GetService("Players").LocalPlayer
+
+game:GetService("UserInputService").InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.J then
+        for i, tool in pairs(lp.Backpack:GetChildren()) do
+            if tool:IsA("Tool") and tool.Name == "Pizza" then
+                tool.Parent = lp.Character
+                tool:Activate()
+                task.wait()
+                tool.Parent = lp.Backpack
+            end
+        end
+    end
+end)
+end
+     if Value == "Multi Mop (Press R)" then
+lp = game:GetService("Players").LocalPlayer
+
+game:GetService("UserInputService").InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.R then
+        for i, tool in pairs(lp.Backpack:GetChildren()) do
+            if tool:IsA("Tool") and tool.Name == "Mop" then
+                tool.Parent = lp.Character
+                tool:Activate()
+                task.wait()
+                tool.Parent = lp.Backpack
+            end
+        end
+    end
+end)
+end
+     if Value == "Multi Newspaper (Press O)" then
+lp = game:GetService("Players").LocalPlayer
+
+game:GetService("UserInputService").InputBegan:Connect(function(key)
+    if key.KeyCode == Enum.KeyCode.O then
+        for i, tool in pairs(lp.Backpack:GetChildren()) do
+            if tool:IsA("Tool") and tool.Name == "Newspaper" then
+                tool.Parent = lp.Character
+                tool:Activate()
+                task.wait()
+                tool.Parent = lp.Backpack
+            end
+        end
+    end
+end)
+end
+if Value == "Multi gears (Press E)" then
+lp = game:GetService("Players").LocalPlayer
 
 game:GetService("UserInputService").InputBegan:Connect(function(key)
 	if key.KeyCode == Enum.KeyCode.E then
@@ -135,7 +237,8 @@ game:GetService("UserInputService").InputBegan:Connect(function(key)
 		end
 	end
 end)
-  	end    
+end
+	end    
 })
 
 Tab:AddDropdown({
