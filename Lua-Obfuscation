@@ -11,7 +11,7 @@ local Tab = Window:MakeTab({
 Tab:AddDropdown({
 	Name = "Multi items",
 	Default = "Multi roll",
-	Options = {"Multi Roll", "Multi Burger", "Multi Pizza", "Multi Coffee", "Multi Soda", "Multi Spray Bottle"},
+	Options = {"Multi Roll", "Multi Burger", "Multi Pizza", "Multi Coffee", "Multi Soda", "Multi Spray Bottle","Multi Mop","Multi Soap","Multi Newspaper","Multi Cheese"},
 	Callback = function(Value)
 		if Value == "Multi Roll" then
 		local LP = game.Players.LocalPlayer
@@ -110,6 +110,74 @@ while true do
    wait(1)
    for i,v in pairs (LP.Character:GetChildren()) do
        if v.Name == "SprayBottle" then
+           v:Activate()
+       end
+   end
+end
+end
+if Value == "Multi Mop" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Mop" then
+       v.Parent = LP.Character
+   end
+end
+while true do
+   wait()
+   for i,v in pairs (LP.Character:GetChildren()) do
+       if v.Name == "Mop" then
+           v:Activate()
+       end
+   end
+end
+end
+if Value == "Multi Soap" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Soap" then
+       v.Parent = LP.Character
+   end
+end
+while true do
+   wait()
+   for i,v in pairs (LP.Character:GetChildren()) do
+       if v.Name == "Soap" then
+           v:Activate()
+       end
+   end
+end
+end
+if Value == "Multi Newspaper" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Newspaper" then
+       v.Parent = LP.Character
+   end
+end
+while true do
+   wait()
+   for i,v in pairs (LP.Character:GetChildren()) do
+       if v.Name == "Newspaper" then
+           v:Activate()
+       end
+   end
+end
+end
+if Value == "Multi Cheese" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Cheese" then
+       v.Parent = LP.Character
+   end
+end
+while true do
+   wait()
+   for i,v in pairs (LP.Character:GetChildren()) do
+       if v.Name == "Cheese" then
            v:Activate()
        end
    end
