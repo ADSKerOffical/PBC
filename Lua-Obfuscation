@@ -518,6 +518,21 @@ end
 	end    
 })
 
+Tab:AddButton({
+ Name = "Table spam",
+ Callback = function()
+        while true do
+a = math.random(1, 11)
+local args = {
+    [1] = a
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("ChangeSign"):FireServer(unpack(args))
+task.wait()
+end
+   end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
