@@ -11,7 +11,7 @@ local Tab = Window:MakeTab({
 Tab:AddDropdown({
 	Name = "Multi items",
 	Default = "Multi roll",
-	Options = {"Multi Roll", "Multi Burger", "Multi Pizza", "Multi Coffee", "Multi Soda", "Multi Spray Bottle","Multi Mop","Multi Soap","Multi Newspaper","Multi Cheese"},
+	Options = {"Multi Roll", "Multi Burger", "Multi Pizza", "Multi Taco", "Multi Coffee", "Multi Soda", "Multi Spray Bottle","Multi Mop","Multi Soap","Multi Newspaper","Multi Cheese","Multi TrashCola"},
 	Callback = function(Value)
 		if Value == "Multi Roll" then
 		local LP = game.Players.LocalPlayer
@@ -59,6 +59,23 @@ while true do
    wait(1)
    for i,v in pairs (LP.Character:GetChildren()) do
        if v.Name == "Pizza" then
+           v:Activate()
+       end
+   end
+end
+end
+     if Value == "Multi Taco" then
+      local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "TacoWithFoil" then
+       v.Parent = LP.Character
+   end
+end
+while true do
+   wait(1)
+   for i,v in pairs (LP.Character:GetChildren()) do
+       if v.Name == "TacoWithFoil" then
            v:Activate()
        end
    end
@@ -178,6 +195,23 @@ while true do
    wait()
    for i,v in pairs (LP.Character:GetChildren()) do
        if v.Name == "Cheese" then
+           v:Activate()
+       end
+   end
+end
+end
+   if Value == "Multi TrashCola" then
+      local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "TrashCola" then
+       v.Parent = LP.Character
+   end
+end
+while true do
+   wait(1)
+   for i,v in pairs (LP.Character:GetChildren()) do
+       if v.Name == "TrashCola" then
            v:Activate()
        end
    end
