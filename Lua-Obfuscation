@@ -727,6 +727,26 @@ Tab:AddButton({
   	end    
 })
 
+Tab:AddToggle({
+ Name = "Quickly sorting objects",
+ Default = false,
+ Callback = function(Value)
+  local player = game.Players.LocalPlayer
+Sorting = Value
+while Sorting do
+  for i, item in pairs(player.Backpack:GetChildren()) do
+    if item:IsA("Tool") then
+      player.Character.Humanoid:EquipTool(item)
+      game:GetService("RunService").RenderStepped:wait()
+      player.Character.Humanoid:UnequipTools()
+    end
+  end
+  
+  game:GetService("RunService").RenderStepped:wait()
+end
+ end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
