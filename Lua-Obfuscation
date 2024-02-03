@@ -709,6 +709,24 @@ print(getCurrentItemInHand())
   	end    
 })
 
+Tab:AddTextbox({
+	Name = "Get TrashCola",
+	Default = "default box input",
+	TextDisappear = true,
+	Callback = function(Value)
+		for i = 1, Value do
+fireclickdetector(game:GetService("Workspace")["Trash can"].Trash.Can.ClickDetector)
+end
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Walking tools",
+	Callback = function()
+      		loadstring(game:HttpGet("https://pastebin.com/raw/X43JasMm"))()
+  	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
