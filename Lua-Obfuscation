@@ -541,6 +541,33 @@ while true do
   task.wait(1)
 end
 		end
+if Value == "Copy tools" then
+local player = game.Players.LocalPlayer
+local backpack = player.Backpack
+for _, tool in pairs(backpack:GetChildren()) do
+  if tool:IsA("Tool") then
+    local clone = tool:Clone()
+    clone.Parent = backpack
+    clone.Name = tool.Name.."_copy"
+    clone.Changed:Connect(function()
+      tool:SetAttribute(clone.Name, clone[clone.Name])
+    end)
+    tool.Changed:Connect(function()
+      if clone[tool.Name] ~= nil then
+        clone[tool.Name] = tool[tool.Name]  
+      end
+    end)
+  end
+end
+end
+if Value == "Steal tools" then
+for i,v in pairs (game.Players:GetChildren()) do
+wait()
+for i,b in pairs (v.Backpack:GetChildren()) do
+b.Parent = game.Players.LocalPlayer.Backpack
+end
+end
+end
 	end    
 })
 
