@@ -711,7 +711,7 @@ print(getCurrentItemInHand())
 
 Tab:AddTextbox({
 	Name = "Get TrashCola",
-	Default = "default box input",
+	Default = "",
 	TextDisappear = true,
 	Callback = function(Value)
 		for i = 1, Value do
