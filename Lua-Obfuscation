@@ -1,3 +1,26 @@
+local Console = Instance.new("ScreenGui")
+Console.Name = 'Console'
+Console.Parent = game.CoreGui
+
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 32, 0, 32)
+button.Position = UDim2.new(0, 105, 0, -32)
+button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+button.BackgroundTransparency = 0.5
+button.Text = "< >"
+button.TextColor3 = Color3.fromRGB(200, 200, 200)
+button.Parent = Console
+button.Font = 'Code'
+button.TextSize = 12
+
+local buttonCorner = Instance.new("UICorner")
+buttonCorner.CornerRadius = UDim.new(0, 8)
+buttonCorner.Parent = button
+
+button.MouseButton1Click:Connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, "F9" , false , game)
+end)
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
 
 local Window = OrionLib:MakeWindow({Name = "Public bathroom Hub", HidePremium = true, IntroEnabled = false, SaveConfig = false, ConfigFolder = "OrionTest"})
@@ -600,6 +623,90 @@ game:GetService("ReplicatedStorage"):WaitForChild("ChangeSign"):FireServer(unpac
 task.wait()
 end
    end    
+})
+
+Tab:AddDropdown({
+	Name = "Check inventory",
+	Default = "",
+	Options = {"Check items", "Check items v2"},
+	Callback = function(Value)
+		if Value == "Check items" then
+		local Inventory = game:GetService("Players").LocalPlayer.Backpack:GetChildren()
+
+local Burgers = 0
+local Soda = 0
+local Pizza = 0
+local Coffee = 0
+local TpRoll = 0
+
+for i,v in pairs(Inventory) do
+  if v.Name == "Burger" then
+    Burgers = Burgers + 1
+  end
+end
+
+for i,v in pairs(Inventory) do
+  if v.Name == "Soda" then
+    Soda = Soda + 1
+  end
+end
+
+for i,v in pairs(Inventory) do
+  if v.Name == "Pizza" then
+    Pizza = Pizza + 1
+  end
+end
+
+for i,v in pairs(Inventory) do
+  if v.Name == "Coffee" then
+    Coffee = Coffee + 1
+  end
+end
+
+for i,v in pairs(Inventory) do
+  if v.Name == "TpRoll" then
+    TpRoll = TpRoll + 1
+  end
+end
+
+print("You have " .. Burgers .. " Burgers")
+print("You have " .. Soda .. " soda")
+print("You have " .. Pizza .. " pizza")
+print("You have " .. Coffee .. " coffee")
+print("You have " .. TpRoll .. " toilet paper")
+		end
+		if Value == "Check items v2" then
+		local Inventory = game:GetService("Players").LocalPlayer.Backpack:GetChildren()
+
+local TotalItems = 0
+
+for i,v in pairs(Inventory) do
+  TotalItems = TotalItems + 1
+end
+
+print("You have " .. TotalItems .. " items")
+		end
+	end    
+})
+
+Tab:AddButton({
+	Name = "Find an item with a name",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local function getCurrentItemInHand()
+    if player.Character then
+        -- Перебираем все объекты в руках персонажа
+        for _, item in pairs(player.Character:GetChildren()) do
+            if item:IsA("Tool") then
+                return item.Name
+            end
+        end
+    end
+    return "No item in hand"
+end
+
+print(getCurrentItemInHand())
+  	end    
 })
 
 local Tab = Window:MakeTab({
