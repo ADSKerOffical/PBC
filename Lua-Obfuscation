@@ -782,8 +782,7 @@ while Sorting do
       player.Character.Humanoid:UnequipTools()
     end
   end
-  
-  game:GetService("RunService").RenderStepped:wait()
+  task.wait()
 end
  end    
 })
