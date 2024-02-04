@@ -834,10 +834,11 @@ end
 Tab:AddButton({
 	Name = "Kill all npcs",
 	Callback = function()
-      		sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 112412400000)
+      		
+sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 112412400000)
 sethiddenproperty(game.Players.LocalPlayer, "MaxSimulationRadius", 112412400000)
-for i,d in pairs(game.Workspace:GetDescendants()) do
-    if d.ClassName == 'Humanoid' and d.Parent.Name ~= game.Players.LocalPlayer.Name then
+for i, d in pairs(game.Workspace:GetDescendants()) do
+    if d.ClassName == 'Humanoid' and not game.Players:FindFirstChild(d.Parent.Name) then
         d.Health = 0
     end
 end
