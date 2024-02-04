@@ -790,6 +790,25 @@ end
  end    
 })
 
+Tab:AddToggle({
+ Name = "Quickly sorting objects v2",
+ Default = fasle,
+ Callback = function(Value)
+SortingE = Value
+while SortingE do
+lp = game:GetService("Players").LocalPlayer
+  for i,tool in pairs(lp.Backpack:GetChildren()) do
+   if tool:IsA("Tool") then
+    tool.Parent = lp.Character
+    tool:Activate()
+    task.wait()
+    tool.Parent = lp.Backpack
+   end
+  end
+end
+   end    
+})
+
 Tab:AddButton({
  Name = "Audio stealer",
  Callback = function()
