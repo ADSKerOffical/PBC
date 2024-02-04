@@ -499,9 +499,9 @@ Tab:AddDropdown({
 		if Value == "Drop tools" then
 		for i,v in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
    if v:IsA("Tool")  then
-    wait(0.1)
+    game:GetService("RunService").RenderStepped:wait()
     v.Parent = game.Players.LocalPlayer.Character
-    wait(0.1)
+    game:GetService("RunService").RenderStepped:wait()
     v.Parent = game.Workspace
 end
 end
