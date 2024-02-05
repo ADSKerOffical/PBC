@@ -848,15 +848,22 @@ Tab:AddDropdown({
 	Options = {"Bring parts", "Heaven parts"},
 	Callback = function(Value)
 		if Value == "Bring parts" then
-		local plr = game.Players.LocalPlayer
-local char = plr.Character
+		local LocalPlayer = game:GetService("Players").LocalPlayer
 
-game:GetService("RunService").Stepped:Connect(function()
-  for i, v in pairs(workspace:GetDescendants()) do
-    if v:IsA("BasePart") and v.Anchored == false then
-      v.CFrame = char.Head.CFrame
-    end
-  end  
+local movableObjects = workspace:GetDescendants()
+for _, object in pairs(movableObjects) do
+  if object:IsA("BasePart") and object.Anchored == false then
+   
+    object.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+  end
+end
+
+local players = game:GetService("Players"):GetPlayers()
+for _, player in pairs(players) do
+  if player ~= LocalPlayer then
+   print("Anti player")
+  end
+end
 end)
 		end
 		if Value == "Heaven parts" then
