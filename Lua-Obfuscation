@@ -842,6 +842,42 @@ k:AdjustSpeed(0)
 	end    
 })
 
+Tab:AddDropdown({
+	Name = "Parts control",
+	Default = "",
+	Options = {"Bring parts", "Heaven parts"},
+	Callback = function(Value)
+		if Value == "Bring parts" then
+		local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+game:GetService("RunService").Stepped:Connect(function()
+  for i, v in pairs(workspace:GetDescendants()) do
+    if v:IsA("BasePart") and v.Anchored == false then
+      v.CFrame = char.Head.CFrame
+    end
+  end  
+end)
+		end
+		if Value == "Heaven parts" then
+		last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
+
+local HEIGHT_OFFSET = 500
+
+for _, object in ipairs(workspace:GetDescendants()) do
+  if object:IsA("BasePart") and object.Anchored == false then
+    local originalCFrame = object.CFrame
+    object.CFrame = CFrame.new(originalCFrame.p.X, HEIGHT_OFFSET, originalCFrame.p.Z) 
+  end 
+end
+
+task.wait()
+
+game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy
+		end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
