@@ -878,6 +878,29 @@ end
 	end    
 })
 
+Tab:AddToggle({
+	Name = "Bring NPCs",
+	Default = false,
+	Callback = function(Value)
+		local Players = game:GetService("Players")
+local RunService = game:GetService("RunService") 
+
+Bring = Value
+while Bring do
+  for i, player in ipairs(Players:GetPlayers()) do
+    if player.Character then
+      for i, model in ipairs(workspace:GetDescendants()) do
+        if model:IsA("Model") and model:FindFirstChild("Humanoid") then
+          model:MoveTo(player.Character.Head.Position)
+        end
+      end 
+    end
+  end
+  RunService.Heartbeat:Wait()
+end
+	end    
+})
+
 Tab:AddDropdown({
 	Name = "Enable",
 	Default = "E",
