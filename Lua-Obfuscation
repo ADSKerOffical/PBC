@@ -864,7 +864,7 @@ for _, player in pairs(players) do
    print("Anti player")
   end
 end
-end)
+end
 		end
 		if Value == "Heaven parts" then
 		last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
