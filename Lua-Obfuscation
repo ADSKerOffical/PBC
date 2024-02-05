@@ -802,6 +802,7 @@ lp = game:GetService("Players").LocalPlayer
     tool.Parent = lp.Backpack
    end
   end
+task.wait()
 end
    end    
 })
