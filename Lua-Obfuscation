@@ -813,6 +813,35 @@ Tab:AddButton({
    end    
 })
 
+Tab:AddDropdown({
+	Name = "Animations",
+	Default = "",
+	Options = {"Quick Bang", "Quick Dance", "Freeze Anims"},
+	Callback = function(Value)
+	if Value == "Quick Bang" then
+	local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://148840371"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(10)
+	end
+	if Value == "Quick Dance" then
+	local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://33796059"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(75)
+	end
+	if Value == "Freeze Animation" then
+	local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://181525546"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(0)
+	end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
@@ -831,10 +860,12 @@ end
   	end    
 })
 
-Tab:AddButton({
-	Name = "Kill all npcs",
-	Callback = function()
-      		
+Tab:AddToggle({
+	Name = "Kill all NPCs",
+	Default = false,
+	Callback = function(Value)
+		Kill = Value
+while Kill do
 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", 112412400000)
 sethiddenproperty(game.Players.LocalPlayer, "MaxSimulationRadius", 112412400000)
 for i, d in pairs(game.Workspace:GetDescendants()) do
@@ -842,7 +873,9 @@ for i, d in pairs(game.Workspace:GetDescendants()) do
         d.Health = 0
     end
 end
-  	end    
+task.wait(0.1)
+end
+	end    
 })
 
 Tab:AddDropdown({
