@@ -1,26 +1,4 @@
-local Console = Instance.new("ScreenGui")
-Console.Name = 'Console'
-Console.Parent = game.CoreGui
-
-local button = Instance.new("TextButton")
-button.Size = UDim2.new(0, 32, 0, 32)
-button.Position = UDim2.new(0, 105, 0, -32)
-button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-button.BackgroundTransparency = 0.5
-button.Text = "Console"
-button.TextColor3 = Color3.fromRGB(200, 200, 200)
-button.Parent = Console
-button.Font = 'Code'
-button.TextSize = 12
-
-local buttonCorner = Instance.new("UICorner")
-buttonCorner.CornerRadius = UDim.new(0, 8)
-buttonCorner.Parent = button
-
-button.MouseButton1Click:Connect(function()
-    game:GetService("VirtualInputManager"):SendKeyEvent(true, "F9" , false , game)
-end)
-
+-- How did you get here
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
 
 local Window = OrionLib:MakeWindow({Name = "Budgie Hub", HidePremium = true, IntroEnabled = false, SaveConfig = false, ConfigFolder = "OrionTest"})
