@@ -885,6 +885,48 @@ game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mraz
 	end    
 })
 
+Tab:AddDropdown({
+	Name = "Player mass",
+	Default = "",
+	Options = {"Very heavy mass", "Normal mass", "Zero mass"},
+	Callback = function(Value)
+		if Value == "Very heavy mass" then
+		local plr = game.Players.LocalPlayer
+local char = plr.Character
+SwEF = 1e9999 * 1e9999 * 1e99
+  
+  for _, child in pairs(char:GetChildren()) do
+    if child:IsA("BasePart") then
+      child.Massless = false
+      child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF) 
+    end
+  end
+		end
+		if Value == "Normal mass" then
+		local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+  for _, child in pairs(char:GetChildren()) do
+    if child:IsA("BasePart") then
+      child.Massless = false
+      child.CustomPhysicalProperties = PhysicalProperties.new(10, 0.3, 0.5) 
+    end
+  end
+		end
+		if Value == "Zero mass" then
+		local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+  for _, child in pairs(char:GetChildren()) do
+    if child:IsA("BasePart") then
+      child.Massless = false
+      child.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0) 
+    end
+  end
+		end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
@@ -1067,37 +1109,6 @@ for i,v in pairs(NPCs) do
     v:Destroy()
   end
 end
-   end    
-})
-
-Tab:AddButton({
-	Name = "Very heavy mass",
-	Callback = function()
-		local plr = game.Players.LocalPlayer
-local char = plr.Character
-SwEF = 1e9999 * 1e9999 * 1e99
-  
-  for _, child in pairs(char:GetChildren()) do
-    if child:IsA("BasePart") then
-      child.Massless = false
-      child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF) 
-    end
-  end
-	end    
-})
-
-Tab:AddButton({
- Name = "Slip mode",
- Callback = function()
-        local plr = game.Players.LocalPlayer
-local char = plr.Character
-
-  for _, child in pairs(char:GetChildren()) do
-    if child:IsA("BasePart") then
-      child.Massless = false
-      child.CustomPhysicalProperties = PhysicalProperties.new(0, 100, 100) 
-    end
-  end
    end    
 })
 
