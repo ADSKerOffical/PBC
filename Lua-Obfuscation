@@ -1022,3 +1022,147 @@ Tab:AddButton({
         loadstring(game:HttpGet("https://pastebin.com/raw/9QCyuc2p"))()
    end    
 })
+
+Tab:AddButton({
+	Name = "Fulbright",
+	Callback = function()
+      		pcall(function()
+    local lighting = game:GetService("Lighting");
+    lighting.Ambient = Color3.fromRGB(255, 255, 255);
+    lighting.Brightness = 1;
+    lighting.FogEnd = 1e10;
+    for i, v in pairs(lighting:GetDescendants()) do
+        if v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("SunRaysEffect") then
+            v.Enabled = false;
+        end;
+    end;
+    lighting.Changed:Connect(function()
+        lighting.Ambient = Color3.fromRGB(255, 255, 255);
+        lighting.Brightness = 1;
+        lighting.FogEnd = 1e10;
+    end);
+    spawn(function()
+        local character = game:GetService("Players").LocalPlayer.Character;
+        while wait() do
+            repeat wait() until character ~= nil;
+            if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
+                local headlight = Instance.new("PointLight", character.HumanoidRootPart);
+                headlight.Brightness = 1;
+                headlight.Range = 60;
+            end;
+        end;
+    end);
+end)
+
+  	end    
+})
+
+Tab:AddButton({
+ Name = "Destroy everything",
+ Callback = function()
+        local NPCs = game:GetService("Workspace"):GetChildren()
+
+for i,v in pairs(NPCs) do
+  if v:IsA("Model") and v.Name ~= game.Players.LocalPlayer.Name then
+    v:Destroy()
+  end
+end
+   end    
+})
+
+Tab:AddButton({
+	Name = "Very heavy mass",
+	Callback = function()
+		local plr = game.Players.LocalPlayer
+local char = plr.Character
+SwEF = 1e9999 * 1e9999 * 1e99
+  
+  for _, child in pairs(char:GetChildren()) do
+    if child:IsA("BasePart") then
+      child.Massless = false
+      child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF) 
+    end
+  end
+	end    
+})
+
+Tab:AddButton({
+ Name = "Slip mode",
+ Callback = function()
+        local plr = game.Players.LocalPlayer
+local char = plr.Character
+
+  for _, child in pairs(char:GetChildren()) do
+    if child:IsA("BasePart") then
+      child.Massless = false
+      child.CustomPhysicalProperties = PhysicalProperties.new(0, 100, 100) 
+    end
+  end
+   end    
+})
+
+Tab:AddTextbox({
+	Name = "???????",
+	Default = "input",
+	TextDisappear = true,
+	Callback = function(Value)
+	Apsw = Value
+                
+local password = "9928"
+
+-- По нажатию на кнопку проверяем пароль
+    if Apsw == password then
+        Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://1839246711"
+Spooky.Volume = 10
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = fasle
+Spooky:Play()
+    else 
+        Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://670599653"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = fasle
+Spooky:Play()
+    end
+    end
+})
+
+Tab:AddTextbox({
+ Name = "???????",
+ Default = "input",
+ TextDisappear = true,
+ Callback = function(Value)
+  SMerp = Value
+local password = "2147483647"
+if SMerp == password then
+local co = Instance.new("ColorCorrectionEffect")
+co.Parent = game.Lighting
+co.Saturation = 150
+co.TintColor = Color3.fromRGB(255, 0, 0)
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://5275335256"
+Spooky.Volume = 3
+Spooky.PlaybackSpeed = 0.9
+Spooky.Looped = true
+Spooky:Play()
+
+game.Lighting.FogStart = 20
+game.Lighting.FogEnd = 25
+game.Lighting.FogColor = Color3.new(0,0,0)
+     else
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://670559653"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = fasle
+Spooky:Play()
+end
+ end   
+})
