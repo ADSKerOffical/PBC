@@ -824,7 +824,7 @@ k:AdjustSpeed(0)
 Tab:AddDropdown({
 	Name = "Parts control",
 	Default = "",
-	Options = {"Bring parts", "Heaven parts"},
+	Options = {"Bring parts", "Heaven parts", "Pusher"},
 	Callback = function(Value)
 		if Value == "Bring parts" then
 		local LocalPlayer = game:GetService("Players").LocalPlayer
