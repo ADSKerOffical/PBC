@@ -860,6 +860,45 @@ task.wait()
 
 game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy
 		end
+
+if Value == "Pusher" then
+ local plr = game.Players.LocalPlayer
+local char = plr.Character
+SwEF = 1e9999 * 1e9999 * 1e99
+  
+  for _, child in pairs(char:GetChildren()) do
+    if child:IsA("BasePart") then
+      child.Massless = false
+      child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF) 
+    end
+  end
+        local tool = Instance.new("Tool") -- Создаем инструмент для игрока
+tool.Name = "Pusher" -- Название инструмента
+tool.RequiresHandle = false -- Инструмент не требует наличия ручки
+tool.Activated:Connect(function()
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+    local clickPosition = mouse.Hit.p -- Получаем позицию клика
+
+    -- Определяем радиус действия инструмента
+    local radius = 100
+
+    -- Перебираем все объекты в Workspace
+    for _, item in pairs(workspace:GetDescendants()) do
+        if (item:IsA("Part") or item:IsA("MeshPart")) and not item.Anchored then -- Проверяем, является ли объект частью с физикой и не закреплен ли он
+            local distance = (item.Position - clickPosition).magnitude -- Рассчитываем расстояние от объекта до точки клика
+
+            if distance <= radius then -- Проверяем, находится ли объект в радиусе действия
+                -- Рассчитываем направление отталкивания и применяем импульс
+                local direction = (item.Position - clickPosition).unit
+                item:ApplyImpulse(direction * 1000) -- Сила импульса, умноженная на направление
+            end
+        end
+    end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack -- Помещаем инструмент в инвентарь игрока
+end
 	end    
 })
 
@@ -1087,6 +1126,16 @@ for i,v in pairs(NPCs) do
     v:Destroy()
   end
 end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Endless zoom",
+ Callback = function()
+        local plr = game.Players.LocalPlayer
+
+plr.CameraMaxZoomDistance = 1e99
+plr.CameraMinZoomDistance = 0
    end    
 })
 
