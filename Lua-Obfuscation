@@ -990,6 +990,240 @@ SwEF = 1e9999 * 1e9999 * 1e99
     end
 })
 
+Tab:AddDropdown({
+	Name = "Equip specific tools",
+	Default = "None",
+	Options = {"Roll", "Burger", "Pizza", "Taco", "Coffee", "Soda", "Spray Bottle","Mop","Newspaper","TrashCola"},
+	Callback = function(Value)
+		if Value == "Roll" then
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "TpRoll" then
+       v.Parent = LP.Character
+   end
+end
+		end
+		if Value == "Burger" then
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Burger" then
+       v.Parent = LP.Character
+   end
+end
+		end
+		if Value == "Pizza" then
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Pizza" then
+       v.Parent = LP.Character
+   end
+end
+		end
+		if Value == "Taco" then
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "TacoWithFoil" then
+       v.Parent = LP.Character
+   end
+end
+		end
+		if Value == "Coffee" then
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Coffee" then
+       v.Parent = LP.Character
+   end
+end
+		end
+		if Value == "Soda" then
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Soda" then
+       v.Parent = LP.Character
+   end
+end
+		end
+		if Value == "Spray Bottle" then
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "SprayBottle" then
+       v.Parent = LP.Character
+   end
+end
+		end
+		if Value == "Mop" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Mop" then
+       v.Parent = LP.Character
+   end
+end
+       end
+       if Value == "Newspaper" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Newspaper" then
+       v.Parent = LP.Character
+   end
+end
+       end
+       if Value == "TrashCola" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "TrashCola" then
+       v.Parent = LP.Character
+   end
+end
+       end
+	end    
+})
+        
+Tab:AddDropdown({
+    Name = "Grip tools",
+    Default = "None",
+    Options = {"Roll", "Burger", "Pizza", "Taco", "Coffee", "Soda", "Spray Bottle","Mop","Soap","Newspaper","Sign","Phone","Award","ProtestSign","Sponge","TrashCola"},
+    Callback = function(Value)
+        if Value == "Roll" then
+        while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("TpRoll")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+        end
+        if Value == "Burger" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Burger")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Pizza" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Pizza")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Taco" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("TacoWithFoil")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Coffee" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Coffee")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Soda" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Soda")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Spray Bottle" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("SprayBottle")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Mop" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Mop")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Soap" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Soap")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Newspaper" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Newspaper")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Sign" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Sign")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Phone" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Phone")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Award" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Award")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "ProtestSign" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("ProtestSign")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "Sponge" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("Sponge")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+if Value == "TrashCola" then
+while wait() do
+local player = game.Players.LocalPlayer
+local tool = player.Backpack:WaitForChild("TrashCola")
+  tool.GripPos = Vector3.new(math.random(-5, 5), 0, math.random(-5, 5))
+  wait()
+end
+end
+    end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
