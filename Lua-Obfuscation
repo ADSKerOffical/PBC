@@ -629,10 +629,12 @@ end
 	end    
 })
 
-Tab:AddButton({
+Tab:AddToggle({
  Name = "Table spam",
- Callback = function()
-        while true do
+ Default = fasle,
+ Callback = function(Value)
+ Tolp = Value
+        while Tolp do
 a = math.random(1, 11)
 local args = {
     [1] = a
@@ -693,6 +695,23 @@ print("You have " .. Soda .. " soda")
 print("You have " .. Pizza .. " pizza")
 print("You have " .. Coffee .. " coffee")
 print("You have " .. TpRoll .. " toilet paper")
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
 		end
 		if Value == "Check items v2" then
 		local Inventory = game:GetService("Players").LocalPlayer.Backpack:GetChildren()
@@ -704,6 +723,23 @@ for i,v in pairs(Inventory) do
 end
 
 print("You have " .. TotalItems .. " items")
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
 		end
 	end    
 })
@@ -725,6 +761,23 @@ local function getCurrentItemInHand()
 end
 
 print(getCurrentItemInHand())
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
   	end    
 })
 
