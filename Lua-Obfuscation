@@ -1519,6 +1519,60 @@ end)
    end    
 })
 
+Tab:AddDropdown({
+	Name = "Remove body",
+	Default = "",
+	Options = {"Head", "Arms", "Torso", "Legs"},
+	Callback = function(Value)
+		if Value == "Head" then
+		local player = game.Players.LocalPlayer
+local character = player.Character
+local head = character:FindFirstChild("Head")
+
+if head then
+  head:Destroy()
+end
+		end
+		if Value == "Arms" then
+		local player = game.Players.LocalPlayer
+local character = player.Character
+local leftArm = character:FindFirstChild("LeftUpperArm")
+local rightArm = character:FindFirstChild("RightUpperArm")
+
+if leftArm then
+   leftArm:Destroy()
+end
+
+if rightArm then 
+   rightArm:Destroy()
+end
+		end
+		if Value == "Torso" then
+		local player = game.Players.LocalPlayer
+local character = player.Character
+local torso = character:FindFirstChild("Torso")
+
+if torso then
+  torso:Destroy()
+end
+		end
+		if Value == "Legs" then
+		local player = game.Players.LocalPlayer
+local character = player.Character
+local leftLeg = character:FindFirstChild("LeftUpperLeg") 
+local rightLeg = character:FindFirstChild("RightUpperLeg")
+
+if leftLeg then
+  leftLeg:Destroy()
+end
+
+if rightLeg then
+  rightLeg:Destroy() 
+end
+		end
+	end    
+})
+
 Tab:AddTextbox({
 	Name = "???????",
 	Default = "input",
