@@ -1335,15 +1335,7 @@ Tab:AddButton({
 	Name = "Touch all",
 	Callback = function()
       		local plr = game.Players.LocalPlayer.Character.Head
-for i, v in pairs(gamwhile wait() do
-  local player = game.Players.LocalPlayer
-  for _, tool in ipairs(player.Backpack:GetChildren()) do
-    if tool:IsA("Tool") and tool.Name == "Burger" then
-      tool.GripPos = Vector3.new(math.random(-20, 20), 0, math.random(-20, 20))
-    end
-  end
-  wait() 
-ende:GetService("Workspace"):GetDescendants()) do
+for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
         if v.Name == "TouchInterest" and v.Parent then
         firetouchinterest(plr, v.Parent, 0)
     end
