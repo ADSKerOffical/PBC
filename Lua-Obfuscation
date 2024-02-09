@@ -1573,6 +1573,28 @@ end
 	end    
 })
 
+Tab:AddDropdown({
+	Name = "Part Control v2",
+	Default = "",
+	Options = {"Part Anchored", "Part Unanchored"},
+	Callback = function(Value)
+		if Value == "Part Anchored" then
+		for _, part in ipairs(workspace:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Anchored = true
+        end
+    end
+		end
+		if Value == "Part Unanchored" then
+		for _, part in ipairs(workspace:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Anchored = fasle
+        end
+    end
+		end
+	end    
+})
+
 Tab:AddTextbox({
 	Name = "???????",
 	Default = "input",
@@ -1758,4 +1780,22 @@ end
 end
 end
      end
+})
+
+local Section = Tab:AddSection({
+	Name = "Useful sites"
+})
+
+Tab:AddButton({
+ Name = "Bypass Link",
+ Callback = function()
+        setclipboard("https://bypass.city")
+   end    
+})
+
+Tab:AddButton({
+ Name = "Lua obfuscator",
+ Callback = function()
+        setclipboard("https://luaobfuscator.epizy.com")
+   end    
 })
