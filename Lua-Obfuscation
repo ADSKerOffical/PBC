@@ -1370,6 +1370,190 @@ end
     end    
 })
 
+Tab:AddDropdown({
+    Name = "Grip tools v2",
+    Default = "None",
+    Options = {"Roll", "Burger", "Pizza", "Taco", "Coffee", "Soda", "Spray Bottle","Mop","Soap","Newspaper","Sign","Phone","Award","ProtestSign","Sponge","TrashCola"},
+    Callback = function(Value)
+    if Value == "Roll" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "TpRoll" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Burger" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Burger" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Pizza" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Pizza" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Taco" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "TacoWithFoil" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Coffee" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Coffee" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Soda" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Soda" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Spray Bottle" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "SprayBottle" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Mop" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Mop" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Soap" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Soap" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Newspaper" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Newspaper" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Sign" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Sign" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Phone" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Phone" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Award" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Award" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "ProtestSign" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "ProtestSign" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "Sponge" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "Sponge" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+if Value == "TrashCola" then
+while wait() do
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") and tool.Name == "TrashCola" then
+            tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10))
+        end
+    end
+    wait()
+end
+end
+    end
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
