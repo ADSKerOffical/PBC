@@ -547,23 +547,6 @@ end
 	end    
 })
 
-Tab:AddToggle({
- Name = "Spam sound",
- Default = fasle,
- Callback = function(Value)
-  game:GetService("CoreGui").PurchasePrompt.Enabled = false
-_G.Lag = Value
-while _G.Lag do
-for i,v in pairs(workspace:GetDescendants()) do
-   if v:IsA("ClickDetector") then
-    fireclickdetector(v)
-   end
-end
-  wait(1)
-  end
- end    
-})
-
 Tab:AddButton({
 	Name = "Anti water",
 	Callback = function()
@@ -573,58 +556,6 @@ local parts = workspace:GetPartBoundsInRadius(player.Character:WaitForChild("Hum
 for _, part in ipairs(parts) do
 part.CanTouch = fasle
 end
-end
-	end    
-})
-
-Tab:AddButton({
- Name = "Telekinesis",
- Callback = function()
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/SAZXHUB/Control-update/main/README.md'),true))()
-   end    
-})
-
-Tab:AddButton({
- Name = "Flip player",
- Callback = function()
-        local lp = game:GetService("Players").LocalPlayer
-local c = lp.Character
-local hrp0 = c:FindFirstChild("HumanoidRootPart")
-local hrp1 = hrp0:Clone()
-c.Parent = nil
-hrp0.Parent = hrp1
-hrp0.RootJoint.Part0 = nil
-hrp1.Parent = c
-c.Parent = workspace
-local h = game:GetService("RunService").Heartbeat
-hrp0.Transparency = 0.5
-while h:Wait() and c and c.Parent do
-    hrp0.CFrame = hrp1.CFrame
-    hrp0.Orientation += Vector3.new(0, 0, 180)
-    hrp0.Position -= Vector3.new(0, 1, 0)
-    hrp0.Velocity = hrp1.Velocity
-end
-   end    
-})
-
-Tab:AddToggle({
-	Name = "Bypass walkspeed",
-	Default = false,
-	Callback = function(Value)
-getgenv().TpWalking = Value
-getgenv().Speed = 2
-
-local speaker = game:GetService("Players").LocalPlayer
-local chr = speaker.Character
-local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
-local hb = game:GetService("RunService").Heartbeat
-while getgenv().TpWalking and chr and hum and hum.Parent do
-    local delta = hb:Wait()
-    if hum.MoveDirection.Magnitude > 0 then
-        chr:TranslateBy(hum.MoveDirection * tonumber(getgenv().Speed) * delta * 10)
-    else
-        chr:TranslateBy(hum.MoveDirection * delta * 100000)
-    end
 end
 	end    
 })
