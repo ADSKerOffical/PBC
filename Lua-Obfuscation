@@ -1046,7 +1046,7 @@ SwEF = 1e9999 * 1e9999 * 1e99
 Tab:AddDropdown({
 	Name = "Equip specific tools",
 	Default = "None",
-	Options = {"Roll", "Burger", "Pizza", "Taco", "Coffee", "Soda", "Spray Bottle","Mop","Newspaper","TrashCola"},
+	Options = {"Roll", "Burger", "Pizza", "Taco", "Coffee", "Soda", "Spray Bottle","Mop","Newspaper","Sign", "ProtestSign","Sponge","Phone","Award","TrashCola"},
 	Callback = function(Value)
 		if Value == "Roll" then
 		local LP = game.Players.LocalPlayer
@@ -1138,6 +1138,51 @@ for i,v in pairs(LP.Backpack:GetChildren()) do
    end
 end
        end
+if Value == "Sign" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Sign" then
+       v.Parent = LP.Character
+   end
+end
+end
+if Value == "ProtestSign" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "ProtestSign" then
+       v.Parent = LP.Character
+   end
+end
+end
+if Value == "Sponge" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Sponge" then
+       v.Parent = LP.Character
+   end
+end
+end
+if Value == "Phone" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Phone" then
+       v.Parent = LP.Character
+   end
+end
+end
+if Value == "Award" then
+local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+for i,v in pairs(LP.Backpack:GetChildren()) do
+   if v.Name == "Award" then
+       v.Parent = LP.Character
+   end
+end
+end
 	end    
 })
         
