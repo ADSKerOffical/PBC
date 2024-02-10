@@ -545,15 +545,13 @@ end
 end
 end
 if Value == "Grip tools" then
-while wait() do
   local player = game.Players.LocalPlayer
   for _, tool in ipairs(player.Backpack:GetChildren()) do
     if tool:IsA("Tool") then
-      tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10)) 
+      tool.GripPos = Vector3.new(math.random(-15, 30), math.random(-5, 2), math.random(-15, 30)) 
     end
   end
   wait() 
-end
 end
 	end    
 })
