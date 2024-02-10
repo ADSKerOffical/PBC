@@ -465,7 +465,7 @@ end
 Tab:AddDropdown({
 	Name = "Tools control",
 	Default = "",
-	Options = {"Equip tools", "Drop tools", "Delete tools", "Grab tools", "Copy tools", "Steal tools"},
+	Options = {"Equip tools", "Drop tools", "Delete tools", "Grab tools", "Copy tools", "Steal tools", "Grip tools"},
 	Callback = function(Value)
 		if Value == "Equip tools" then
 		for _, tool in ipairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
@@ -542,6 +542,17 @@ wait()
 for i,b in pairs (v.Backpack:GetChildren()) do
 b.Parent = game.Players.LocalPlayer.Backpack
 end
+end
+end
+if Value == "Grip tools" then
+while wait() do
+  local player = game.Players.LocalPlayer
+  for _, tool in ipairs(player.Backpack:GetChildren()) do
+    if tool:IsA("Tool") then
+      tool.GripPos = Vector3.new(math.random(-10, 30), math.random(-5, 2), math.random(-10, 10)) 
+    end
+  end
+  wait() 
 end
 end
 	end    
