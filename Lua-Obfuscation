@@ -556,9 +556,12 @@ end
 	end    
 })
 
-Tab:AddButton({
-	Name = "Anti water",
-	Callback = function()
+Tab:AddDropdown({
+	Name = "Antis",
+	Default = "",
+	Options = {"Anti Water", "Anti Void", "Anti Trash Cola"},
+	Callback = function(Value)
+		if Value == "Anti Water" then
 		local player = game:GetService("Players").LocalPlayer
 while task.wait() do
 local parts = workspace:GetPartBoundsInRadius(player.Character:WaitForChild("HumanoidRootPart").Position, 10)
@@ -566,6 +569,38 @@ for _, part in ipairs(parts) do
 part.CanTouch = fasle
 end
 end
+		end
+		if Value == "Anti Void" then
+		local part = Instance.new("Part")
+part.Name = "AntiFallPart"
+part.Size = Vector3.new(50000, 5, 50000)
+part.Transparency = 1
+part.Anchored = true
+part.Position = Vector3.new(30, -134, -144)
+part.Parent = game.Workspace
+		end
+		if Value == "Anti Trash Cola" then
+		local player = game.Players.LocalPlayer
+
+local function onItemAdded(item)
+    if item.Name == "TrashCola" then
+        item.Activated:Connect(function()
+            item:Destroy()
+        end)
+    end
+end
+
+local function setupInventory()
+    local inventory = player.Backpack
+    inventory.ChildAdded:Connect(onItemAdded)
+end
+
+player.CharacterAdded:Connect(function(character)
+    setupInventory()
+end)
+
+setupInventory()
+		end
 	end    
 })
 
@@ -1490,49 +1525,6 @@ while wait() do
     end
     wait()
 end
-end
-    end
-})
-
-Tab:AddButton({
- Name = "Anti void",
- Callback = function()
-        local part = Instance.new("Part")
-part.Name = "AntiFallPart"
-part.Size = Vector3.new(50000, 5, 50000)
-part.Transparency = 1
-part.Anchored = true
-part.Position = Vector3.new(30, -134, -144)
-part.Parent = game.Workspace
-   end    
-})
-
-Tab:AddToggle({
-	Name = "Anti Trash Cola",
-	Default = false,
-	Callback = function(Value)
-SodaTr = Value
-while SodaTr do
-wait(0.1)
-local player = game.Players.LocalPlayer
-local inventory = player.Backpack -- Или другое место, где хранятся предметы
-
-local function onItemAdded(item)
-    if item.Name == "TrashCola" then
-        item.Activated:Connect(function()
-            item:Destroy()
-  
-            game.StarterGui:SetCore("SendNotification", {
-                Title = "Warning",
-                Text = "Tool TrashCola was removed",
-                Duration = 5
-            })
-            
-        end)
-    end
-end
-
-inventory.ChildAdded:Connect(onItemAdded)
 end
     end
 })
