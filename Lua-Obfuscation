@@ -1494,6 +1494,49 @@ end
     end
 })
 
+Tab:AddButton({
+ Name = "Anti void",
+ Callback = function()
+        local part = Instance.new("Part")
+part.Name = "AntiFallPart"
+part.Size = Vector3.new(50000, 5, 50000)
+part.Transparency = 1
+part.Anchored = true
+part.Position = Vector3.new(30, -134, -144)
+part.Parent = game.Workspace
+   end    
+})
+
+Tab:AddToggle({
+	Name = "Anti Trash Cola",
+	Default = false,
+	Callback = function(Value)
+SodaTr = Value
+while SodaTr do
+wait(0.1)
+local player = game.Players.LocalPlayer
+local inventory = player.Backpack -- Или другое место, где хранятся предметы
+
+local function onItemAdded(item)
+    if item.Name == "TrashCola" then
+        item.Activated:Connect(function()
+            item:Destroy()
+  
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "Warning",
+                Text = "Tool TrashCola was removed",
+                Duration = 5
+            })
+            
+        end)
+    end
+end
+
+inventory.ChildAdded:Connect(onItemAdded)
+end
+    end
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
@@ -2014,5 +2057,70 @@ Tab:AddButton({
  Name = "Lua obfuscator",
  Callback = function()
         setclipboard("https://luaobfuscator.epizy.com")
+   end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Credit",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddLabel("By ADSKer and Tomato2007")
+
+local Section = Tab:AddSection({
+	Name = "Scripts from ADSKer"
+})
+
+Tab:AddButton({
+ Name = "ADSKer Hub",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/ADSKerHub/main/ADSKExe"))()
+   end    
+})
+
+Tab:AddButton({
+ Name = "BendyHubX",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/Bendy/main/BendyHubX"))()
+   end    
+})
+
+Tab:AddButton({
+ Name = "Free admin GUI",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/FreeAdmin/main/GUI"))()
+   end    
+})
+
+Tab:AddButton({
+ Name = "LuckyGUI",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/LuckyBlock/main/LuckyGUI"))()
+   end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Scripts from Tomato2007"
+})
+
+Tab:AddButton({
+ Name = "Tomato Hub X",
+ Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/jpx7sKJe"))()
+   end    
+})
+
+Tab:AddButton({
+ Name = "Grip tools GUI",
+ Callback = function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/z6UmQaqN"))()
+   end    
+})
+
+Tab:AddButton({
+ Name = "Backrooms Hub",
+ Callback = function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/VnpffKhe'))()
    end    
 })
