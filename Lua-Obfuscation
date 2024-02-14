@@ -2114,10 +2114,3 @@ Tab:AddButton({
         loadstring(game:HttpGet("https://pastebin.com/raw/z6UmQaqN"))()
    end    
 })
-
-Tab:AddButton({
- Name = "Backrooms Hub",
- Callback = function()
-        loadstring(game:HttpGet('https://pastebin.com/raw/VnpffKhe'))()
-   end    
-})
