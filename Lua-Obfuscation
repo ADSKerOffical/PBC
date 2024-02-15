@@ -977,6 +977,68 @@ local char = plr.Character
 	end    
 })
 
+Tab:AddDropdown({
+    Name = "Mass Unanchored Objects",
+    Default = "koop",
+    Options = {"Very heavy parts", "Normal parts", "Very lightweight parts"},
+    Callback = function(Value)
+        if Value == "Very heavy parts" then
+        local Players = game:GetService("Players")
+local function isPartOfPlayerCharacter(part)
+    for _, player in ipairs(Players:GetPlayers()) do
+        local character = player.Character
+        if character and part:IsDescendantOf(character) then
+            return true
+        end
+    end
+    return false
+end
+
+for _, part in ipairs(workspace:GetDescendants()) do
+    if part:IsA("BasePart") and not isPartOfPlayerCharacter(part) then
+        part.CustomPhysicalProperties = PhysicalProperties.new(9e999, 0, 0, 9e999, 9e999)
+    end
+end
+        end
+        if Value == "Normal parts" then
+        local Players = game:GetService("Players")
+local function isPartOfPlayerCharacter(part)
+    for _, player in ipairs(Players:GetPlayers()) do
+        local character = player.Character
+        if character and part:IsDescendantOf(character) then
+            return true
+        end
+    end
+    return false
+end
+
+for _, part in ipairs(workspace:GetDescendants()) do
+    if part:IsA("BasePart") and not isPartOfPlayerCharacter(part) then
+        part.CustomPhysicalProperties = PhysicalProperties.new(1, 1, 1, 1, 1)
+    end
+end
+        end
+        if Value == "Very lightweight parts" then
+        local Players = game:GetService("Players")
+local function isPartOfPlayerCharacter(part)
+    for _, player in ipairs(Players:GetPlayers()) do
+        local character = player.Character
+        if character and part:IsDescendantOf(character) then
+            return true
+        end
+    end
+    return false
+end
+
+for _, part in ipairs(workspace:GetDescendants()) do
+    if part:IsA("BasePart") and not isPartOfPlayerCharacter(part) then
+        part.CustomPhysicalProperties = PhysicalProperties.new(-9e9999, 9e9999, 0, 0, 0)
+    end
+end
+        end
+    end    
+})
+
 Tab:AddTextbox({
 	Name = "Setting Pusher",
 	Default = "power",
@@ -1852,6 +1914,53 @@ Tab:AddDropdown({
 	end    
 })
 
+Tab:AddButton({
+ Name = "Black hole tool",
+ Callback = function()
+        local tool = Instance.new("Tool")
+tool.RequiresHandle = false -- Исправлена опечатка здесь
+tool.Name = "Black hole tool"
+tool.TextureId = "http://www.roblox.com/asset/?id=153700392"
+
+local isEnabled = false
+
+local function onActivated()
+    isEnabled = not isEnabled
+
+    if not isEnabled then return end
+
+    local plr = game.Players.LocalPlayer
+    local char = plr.Character
+    local SwEF = 1e9999 * 1e9999 * 1e9999
+
+    for _, child in pairs(char:GetChildren()) do
+        if child:IsA("BasePart") then
+            child.Massless = false
+            child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF)
+        end
+    end
+
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+    local clickPosition = mouse.Hit.p
+
+    while isEnabled and wait() do
+        for _, item in pairs(workspace:GetDescendants()) do
+            if item:IsA("Part") or item:IsA("MeshPart") then
+                if item.Anchored == false then
+                    item:ApplyImpulse((clickPosition - item.Position).unit * 1500)
+                end
+            end
+        end
+    end
+end
+
+tool.Activated:Connect(onActivated)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+   end    
+})
+
 Tab:AddTextbox({
 	Name = "???????",
 	Default = "input",
@@ -2114,3 +2223,10 @@ Tab:AddButton({
         loadstring(game:HttpGet("https://pastebin.com/raw/z6UmQaqN"))()
    end    
 })
+
+aText = [[
+:
+-- Added "Mass Unanchored Objects"
+-- Test tool
+]]
+Tab:AddParagraph("Updates","New features added " .. aText .. "")
