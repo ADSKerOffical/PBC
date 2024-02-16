@@ -1596,6 +1596,24 @@ end
     end
 })
 
+Tab:AddToggle({
+	Name = "Auto clicker",
+	Default = false,
+	Callback = function(Value)
+	AutoCl = Value
+		local LP = game.Players.LocalPlayer
+repeat wait() until LP.Character
+while AutoCl do
+    wait()
+    for i, v in pairs(LP.Character:GetChildren()) do
+        if v:IsA("Tool") then
+            v:Activate()
+        end
+    end
+end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
@@ -2226,7 +2244,6 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "Mass Unanchored Objects"
--- Test tool
+-- Added "Auto clicker"
 ]]
-Tab:AddParagraph("Updates","New features added " .. aText .. "")
+Tab:AddParagraph("Updates","New features added" .. aText .. "")
