@@ -772,13 +772,6 @@ end
 	end	  
 })
 
-Tab:AddButton({
-	Name = "Walking tools",
-	Callback = function()
-      		loadstring(game:HttpGet("https://pastebin.com/raw/X43JasMm"))()
-  	end    
-})
-
 Tab:AddToggle({
  Name = "Quickly sorting objects",
  Default = false,
