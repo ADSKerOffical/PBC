@@ -1607,6 +1607,49 @@ end
 	end    
 })
 
+Tab:AddButton({
+ Name = "Parts finder.",
+ Callback = function()
+        -- Получаем локального игрока
+local player = game.Players.LocalPlayer
+if player then
+    -- Пытаемся получить персонажа игрока
+    local character = player.Character or player.CharacterAdded:Wait()
+    if character then
+        -- Получаем HumanoidRootPart (или Torso для старых моделей) как начальную точку
+        local startingPart = character:FindFirstChild("HumanoidRootPart") or character:FindFirstChild("Torso")
+        if startingPart then
+            -- Устанавливаем targetPosition относительно позиции HumanoidRootPart
+            local targetPosition = startingPart.Position + Vector3.new(-29, 1, -69) -- Смещение относительно текущего положения
+
+            -- Теперь используем targetPosition для дальнейших действий, например, для создания Region3
+            local radius = 50
+            local regionSize = Vector3.new(radius * 2, radius * 2, radius * 2) -- Размер области
+            local regionCenter = targetPosition
+            local region = Region3.new(regionCenter - regionSize / 2, regionCenter + regionSize / 2)
+            local parts = workspace:FindPartsInRegion3(region, nil, math.huge)
+
+            for _, part in pairs(parts) do
+                print("Object found:", part.Name)
+                -- Взаимодействие с найденными объектами
+            end
+        else
+            print("Air")
+        end
+    end
+end
+
+wait()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
+   end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
@@ -2237,6 +2280,6 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "Auto clicker"
+-- Added "Parts finder"
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
