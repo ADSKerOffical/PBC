@@ -1608,7 +1608,7 @@ end
 })
 
 Tab:AddButton({
- Name = "Parts finder.",
+ Name = "Parts finder",
  Callback = function()
         -- Получаем локального игрока
 local player = game.Players.LocalPlayer
