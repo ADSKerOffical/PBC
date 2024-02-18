@@ -1650,6 +1650,22 @@ OrionLib:MakeNotification({
    end    
 })
 
+Tab:AddToggle({
+	Name = "Mute all sounds",
+	Default = false,
+	Callback = function(Value)
+MuteS = Value
+ while MuteS do
+   wait()
+for i,v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Sound") then
+            v.Playing = fasle
+        end
+    end
+end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
