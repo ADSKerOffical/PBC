@@ -1959,10 +1959,13 @@ tool.Parent = game.Players.LocalPlayer.Backpack
    end    
 })
 
-Tab:AddButton({
- Name = "Kill all",
- Callback = function()
-        local range = 1000
+Tab:AddDropdown({
+	Name = "Kill all versions",
+	Default = "",
+	Options = {"Kill all", "Multi kill all", "Anti kill friends", "Multi anti kill friends"},
+	Callback = function(Value)
+		if Value == "Kill all" then
+		local range = 1000
 local player = game:GetService("Players").LocalPlayer
 game:GetService("RunService").RenderStepped:Connect(function()
     local p = game.Players:GetPlayers()
@@ -1979,7 +1982,157 @@ local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
             end
         end
 end)
-   end    
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+ Name = "Budgie Hub",
+ Content = "This function kills everyone sword, but works in some modes",
+ Image = "rbxassetid://9139566624",
+ Time = 10
+})
+		end
+		if Value == "Multi kill all" then
+		local range = 1000 -- Установка дальности действия
+local player = game:GetService("Players").LocalPlayer
+game:GetService("RunService").RenderStepped:Connect(function()
+    local p = game.Players:GetPlayers()
+    for i = 2, #p do 
+        local v = p[i].Character
+        if player.Character then
+            for _, tool in pairs(player.Character:GetChildren()) do
+                if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
+                    tool:Activate()
+                    for _, part in pairs(v:GetChildren()) do
+                        if part:IsA("BasePart") then
+                            firetouchinterest(tool.Handle, part, 0)
+                            firetouchinterest(tool.Handle, part, 1)
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+ Name = "Budgie Hub",
+ Content = "This function kills everyone sword, but it works on all the tools you wear",
+ Image = "rbxassetid://9139566624",
+ Time = 10
+})
+		end
+		if Value == "Anti kill friends" then
+		local range = 1000
+local player = game:GetService("Players").LocalPlayer
+
+-- Функция проверки на дружбу
+local function isFriendWith(player1, player2)
+    return player1:IsFriendsWith(player2.UserId)
+end
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    local players = game.Players:GetPlayers()
+    for i = 2, #players do
+        local otherPlayer = players[i]
+        local character = otherPlayer.Character
+        -- Проверяем, не является ли игрок другом
+        if not isFriendWith(player, otherPlayer) then
+            local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
+            if tool and tool:FindFirstChild("Handle") then
+                tool:Activate()
+                for _, part in next, character:GetChildren() do
+                    if part:IsA("BasePart") then
+                        firetouchinterest(tool.Handle, part, 0)
+                        firetouchinterest(tool.Handle, part, 1)
+                    end
+                end
+            end
+        end
+    end
+end)
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+ Name = "Budgie Hub",
+ Content = "This function kills everyone sword, besides your friends",
+ Image = "rbxassetid://9139566624",
+ Time = 10
+})
+		end
+		if Value == "Multi anti kill friends" then
+		local range = 1000 -- Установка дальности действия
+local player = game:GetService("Players").LocalPlayer
+game:GetService("RunService").RenderStepped:Connect(function()
+    local players = game.Players:GetPlayers()
+    for i = 2, #players do 
+        local otherPlayer = players[i]
+        -- Проверка на дружбу
+        if not player:IsFriendsWith(otherPlayer.UserId)" then
+            local character = otherPlayer.Character
+            if character then
+                local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
+                for _, tool in pairs(player.Character:GetChildren()) do
+                    if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
+                        tool:Activate()
+                        for _, part in pairs(character:GetChildren()) do
+                            if part:IsA("BasePart") then
+                                firetouchinterest(tool.Handle, part, 0)
+                                firetouchinterest(tool.Handle, part, 1)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+ Name = "Budgie Hub",
+ Content = "Merger *Multi kill all* and *Anti kill friends*",
+ Image = "rbxassetid://9139566624",
+ Time = 10
+})
+		end
+	end    
 })
 
 Tab:AddDropdown({
@@ -2371,5 +2524,6 @@ Tab:AddButton({
 aText = [[
 :
 -- Added "Animation finder"
+-- Modification "Kill all"
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
