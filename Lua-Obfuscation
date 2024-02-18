@@ -1641,6 +1641,14 @@ end
 
 wait()
 
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
@@ -1663,6 +1671,72 @@ for i,v in pairs(workspace:GetDescendants()) do
         end
     end
 end
+	end    
+})
+
+Tab:AddDropdown({
+	Name = "Animation finder",
+	Default = "",
+	Options = {"Workspace", "Event"},
+	Callback = function(Value)
+		if Value == "Workspace" then
+		local animations = workspace:GetDescendants()
+for i,v in pairs(animations) do
+  if v:IsA("Animation") then
+    print(v.AnimationId)
+  end
+end
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
+		end
+		if Value == "Event" then
+		local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local humanoid = character:FindFirstChildOfClass("Humanoid")
+if humanoid then
+  local animator = humanoid:FindFirstChildOfClass("Animator")
+  if animator then
+    local playingAnimation = animator:GetPlayingAnimationTracks()[1].Animation
+    if playingAnimation then
+      print(playingAnimation.AnimationId)
+    else
+      print("Animation doesn't play")
+    end
+  else
+    print("Animation not found")
+  end
+else
+  print("Player not found") 
+end
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
+		end
 	end    
 })
 
@@ -2296,6 +2370,6 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "Parts finder"
+-- Added "Animation finder"
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
