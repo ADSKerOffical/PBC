@@ -1,4 +1,3 @@
--- How did you get here
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
 
 local Window = OrionLib:MakeWindow({Name = "Budgie Hub", HidePremium = true, IntroEnabled = false, SaveConfig = false, ConfigFolder = "OrionTest"})
@@ -2095,7 +2094,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
     for i = 2, #players do 
         local otherPlayer = players[i]
         -- Проверка на дружбу
-        if not player:IsFriendsWith(otherPlayer.UserId)" then
+        if not player:IsFriendsWith(otherPlayer.UserId) then
             local character = otherPlayer.Character
             if character then
                 local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
