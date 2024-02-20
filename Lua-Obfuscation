@@ -728,7 +728,7 @@ Tab:AddDropdown({
 	Default = "",
 	Options = {"Parts finder", "Animation finder", "Animation finder v2", "Gear name finder"},
 	Callback = function(Value)
-		If Value == "Parts finder" then
+		if Value == "Parts finder" then
 		local player = game.Players.LocalPlayer
 if player then
     -- Пытаемся получить персонажа игрока
