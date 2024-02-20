@@ -726,7 +726,7 @@ OrionLib:MakeNotification({
 Tab:AddDropdown({
 	Name = "Finders",
 	Default = "",
-	Options = {"Parts finder", "Animation finder", "Animation finder v2},
+	Options = {"Parts finder", "Animation finder", "Animation finder v2", "Gear name finder"},
 	Callback = function(Value)
 		If Value == "Parts finder" then
 		local player = game.Players.LocalPlayer
