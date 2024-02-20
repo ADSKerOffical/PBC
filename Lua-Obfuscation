@@ -723,10 +723,116 @@ OrionLib:MakeNotification({
 	end    
 })
 
-Tab:AddButton({
-	Name = "Find an item with a name",
-	Callback = function()
-      		local player = game.Players.LocalPlayer
+Tab:AddDropdown({
+	Name = "Finders",
+	Default = "",
+	Options = {"Parts finder", "Animation finder", "Animation finder v2},
+	Callback = function(Value)
+		If Value == "Parts finder" then
+		local player = game.Players.LocalPlayer
+if player then
+    -- Пытаемся получить персонажа игрока
+    local character = player.Character or player.CharacterAdded:Wait()
+    if character then
+        -- Получаем HumanoidRootPart (или Torso для старых моделей) как начальную точку
+        local startingPart = character:FindFirstChild("HumanoidRootPart") or character:FindFirstChild("Torso")
+        if startingPart then
+            -- Устанавливаем targetPosition относительно позиции HumanoidRootPart
+            local targetPosition = startingPart.Position + Vector3.new(-29, 1, -69) -- Смещение относительно текущего положения
+
+            -- Теперь используем targetPosition для дальнейших действий, например, для создания Region3
+            local radius = 50
+            local regionSize = Vector3.new(radius * 2, radius * 2, radius * 2) -- Размер области
+            local regionCenter = targetPosition
+            local region = Region3.new(regionCenter - regionSize / 2, regionCenter + regionSize / 2)
+            local parts = workspace:FindPartsInRegion3(region, nil, math.huge)
+
+            for _, part in pairs(parts) do
+                print("Object found:", part.Name)
+                end
+        else
+            print("Air")
+        end
+    end
+end
+
+wait()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
+		end
+		if Value == "Animation finder" then
+		local animations = workspace:GetDescendants()
+for i,v in pairs(animations) do
+  if v:IsA("Animation") then
+    print(v.AnimationId)
+  end
+end
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
+		end
+		if Value == "Animation finder v2" then
+		local player = game:GetService("Players").LocalPlayer
+local character = player.Character
+local humanoid = character:FindFirstChildOfClass("Humanoid")
+if humanoid then
+  local animator = humanoid:FindFirstChildOfClass("Animator")
+  if animator then
+    local playingAnimation = animator:GetPlayingAnimationTracks()[1].Animation
+    if playingAnimation then
+      print(playingAnimation.AnimationId)
+    else
+      print("Animation doesn't play")
+    end
+  else
+    print("Animation not found")
+  end
+else
+  print("Player not found") 
+end
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://9139566624",
+	Time = 5
+})
+		end
+		if Value == "Gear name finder" then
+		local player = game.Players.LocalPlayer
 local function getCurrentItemInHand()
     if player.Character then
         -- Перебираем все объекты в руках персонажа
@@ -757,7 +863,8 @@ OrionLib:MakeNotification({
 	Image = "rbxassetid://9139566624",
 	Time = 5
 })
-  	end    
+		end
+	end    
 })
 
 Tab:AddTextbox({
@@ -1606,57 +1713,6 @@ end
 	end    
 })
 
-Tab:AddButton({
- Name = "Parts finder",
- Callback = function()
-        -- Получаем локального игрока
-local player = game.Players.LocalPlayer
-if player then
-    -- Пытаемся получить персонажа игрока
-    local character = player.Character or player.CharacterAdded:Wait()
-    if character then
-        -- Получаем HumanoidRootPart (или Torso для старых моделей) как начальную точку
-        local startingPart = character:FindFirstChild("HumanoidRootPart") or character:FindFirstChild("Torso")
-        if startingPart then
-            -- Устанавливаем targetPosition относительно позиции HumanoidRootPart
-            local targetPosition = startingPart.Position + Vector3.new(-29, 1, -69) -- Смещение относительно текущего положения
-
-            -- Теперь используем targetPosition для дальнейших действий, например, для создания Region3
-            local radius = 50
-            local regionSize = Vector3.new(radius * 2, radius * 2, radius * 2) -- Размер области
-            local regionCenter = targetPosition
-            local region = Region3.new(regionCenter - regionSize / 2, regionCenter + regionSize / 2)
-            local parts = workspace:FindPartsInRegion3(region, nil, math.huge)
-
-            for _, part in pairs(parts) do
-                print("Object found:", part.Name)
-                -- Взаимодействие с найденными объектами
-            end
-        else
-            print("Air")
-        end
-    end
-end
-
-wait()
-
-Spooky = Instance.new("Sound", game.Workspace)
-Spooky.Name = "Spooky"
-Spooky.SoundId = "rbxassetid://3398620867"
-Spooky.Volume = 1
-Spooky.PlaybackSpeed = 2
-Spooky.Looped = fasle
-Spooky:Play()
-
-OrionLib:MakeNotification({
-	Name = "Budgie Hub",
-	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
-	Time = 5
-})
-   end    
-})
-
 Tab:AddToggle({
 	Name = "Mute all sounds",
 	Default = false,
@@ -1670,72 +1726,6 @@ for i,v in pairs(workspace:GetDescendants()) do
         end
     end
 end
-	end    
-})
-
-Tab:AddDropdown({
-	Name = "Animation finder",
-	Default = "",
-	Options = {"Workspace", "Event"},
-	Callback = function(Value)
-		if Value == "Workspace" then
-		local animations = workspace:GetDescendants()
-for i,v in pairs(animations) do
-  if v:IsA("Animation") then
-    print(v.AnimationId)
-  end
-end
-
-Spooky = Instance.new("Sound", game.Workspace)
-Spooky.Name = "Spooky"
-Spooky.SoundId = "rbxassetid://3398620867"
-Spooky.Volume = 1
-Spooky.PlaybackSpeed = 2
-Spooky.Looped = fasle
-Spooky:Play()
-
-OrionLib:MakeNotification({
-	Name = "Budgie Hub",
-	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
-	Time = 5
-})
-		end
-		if Value == "Event" then
-		local player = game:GetService("Players").LocalPlayer
-local character = player.Character
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-if humanoid then
-  local animator = humanoid:FindFirstChildOfClass("Animator")
-  if animator then
-    local playingAnimation = animator:GetPlayingAnimationTracks()[1].Animation
-    if playingAnimation then
-      print(playingAnimation.AnimationId)
-    else
-      print("Animation doesn't play")
-    end
-  else
-    print("Animation not found")
-  end
-else
-  print("Player not found") 
-end
-
-Spooky = Instance.new("Sound", game.Workspace)
-Spooky.Name = "Spooky"
-Spooky.SoundId = "rbxassetid://3398620867"
-Spooky.Volume = 1
-Spooky.PlaybackSpeed = 2
-Spooky.Looped = fasle
-Spooky:Play()
-
-OrionLib:MakeNotification({
-	Name = "Budgie Hub",
-	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
-	Time = 5
-})
-		end
 	end    
 })
 
@@ -1754,7 +1744,7 @@ for i, v in pairs(game:GetService("Workspace"):GetDescendants()) do
         firetouchinterest(plr, v.Parent, 0)
     end
 end
-  	end    
+  	end
 })
 
 Tab:AddToggle({
