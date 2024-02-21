@@ -2203,7 +2203,7 @@ Tab:AddDropdown({
 Tab:AddDropdown({
 	Name = "Btools",
 	Default = "1",
-	Options = {"Delete tool", "Clone tool", "Grab tool"},
+	Options = {"Delete tool", "Clone tool", "Grab tool", "F3X", "Black hole tool", "White hole tool"},
 	Callback = function(Value)
 		if Value == "Delete tool" then
 		backpack = game:GetService("Players").LocalPlayer.Backpack
@@ -2228,6 +2228,9 @@ cloneTool.Parent = backpack
 grabTool.Name = "Grab"
 grabTool.BinType = 2
 grabTool.Parent = backpack
+if Value == "F3X" then
+loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
+end
 		end
 		if Value == "Black hole tool" then
 		local tool = Instance.new("Tool")
