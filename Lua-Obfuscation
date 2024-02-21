@@ -2200,13 +2200,40 @@ Tab:AddDropdown({
 	end    
 })
 
-Tab:AddButton({
- Name = "Black hole tool",
- Callback = function()
-        local tool = Instance.new("Tool")
+Tab:AddDropdown({
+	Name = "Btools",
+	Default = "1",
+	Options = {"Delete tool", "Clone tool", "Grab tool"},
+	Callback = function(Value)
+		if Value == "Delete tool" then
+		backpack = game:GetService("Players").LocalPlayer.Backpack
+
+hammer = Instance.new("HopperBin")
+hammer.Name = "Hammer"
+hammer.BinType = 4
+hammer.Parent = backpack
+		end
+		if Value == "Clone tool" then
+		backpack = game:GetService("Players").LocalPlayer.Backpack
+		
+		cloneTool = Instance.new("HopperBin")
+cloneTool.Name = "Clone"
+cloneTool.BinType = 3
+cloneTool.Parent = backpack
+		end
+		if Value == "Grab tool" then
+		backpack = game:GetService("Players").LocalPlayer.Backpack
+		
+		grabTool = Instance.new("HopperBin")
+grabTool.Name = "Grab"
+grabTool.BinType = 2
+grabTool.Parent = backpack
+		end
+		if Value == "Black hole tool" then
+		local tool = Instance.new("Tool")
 tool.RequiresHandle = false -- Исправлена опечатка здесь
 tool.Name = "Black hole tool"
-tool.TextureId = "http://www.roblox.com/asset/?id=153700392"
+tool.TextureId = "http://www.roblox.com/asset/?id=16466291679"
 
 local isEnabled = false
 
@@ -2244,7 +2271,90 @@ end
 tool.Activated:Connect(onActivated)
 
 tool.Parent = game.Players.LocalPlayer.Backpack
-   end    
+		end
+		if Value == "White hole tool" then
+		local plr = game.Players.LocalPlayer
+local char = plr.Character
+SwEF = 1e9999 * 1e9999 * 1e99
+
+for _, child in pairs(char:GetChildren()) do
+    if child:IsA("BasePart") then
+        child.Massless = false
+        child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF) 
+    end
+end
+
+local tool = Instance.new("Tool")
+tool.Name = "White hole tool"
+tool.RequiresHandle = false
+tool.TextureId = "http://www.roblox.com/asset/?id=16466455509"
+
+local toggle = true -- Create a toggle variable
+
+tool.Activated:Connect(function()
+    if toggle then
+        local mouse = plr:GetMouse() -- Fix error by replacing player with plr
+        local clickPosition = mouse.Hit.p
+
+        local radius = 10
+
+        for _, item in pairs(workspace:GetDescendants()) do
+            if (item:IsA("Part") or item:IsA("MeshPart")) and not item.Anchored then
+                local distance = (item.Position - clickPosition).magnitude
+
+                if distance <= radius then
+                    local direction = (item.Position - clickPosition).unit
+                    item:ApplyImpulse(direction * 10000)
+                end
+            end
+        end
+    end
+    toggle = not toggle -- Toggle the variable
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+		end
+	end    
+})
+
+Tab:AddDropdown({
+	Name = "RigType",
+	Default = "",
+	Options = {"R6", "R15"},
+	Callback = function(Value)
+		if Value == "R6" then
+		local player = game.Players.LocalPlayer
+local character = player.Character 
+
+character.Humanoid.RigType = Enum.HumanoidRigType.R6
+		end
+		if Value == "R15" then
+		local player = game.Players.LocalPlayer
+local character = player.Character 
+
+character.Humanoid.RigType = Enum.HumanoidRigType.R15
+		end
+	end    
+})
+
+Tab:AddTextbox({
+	Name = "Execute script",
+	Default = "",
+	TextDisappear = fasle,
+	Callback = function(Value)
+		local function executeScript()
+        local script = Value
+        if script ~= "" then
+            local success, error = pcall(function()
+                loadstring(script)()
+            end)
+            
+            if not success then
+                print("Error executing script:", error)
+            end
+        end
+    end
+	end	  
 })
 
 Tab:AddTextbox({
@@ -2512,7 +2622,8 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "Animation finder"
--- Modification "Kill all"
+-- Added "Btools"
+-- Added "RigType"
+-- Added "Execute script"
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
