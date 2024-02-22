@@ -1758,7 +1758,7 @@ v:Disable()
 end
         end
 		end
-		it Value == "Rejoin" then
+		if Value == "Rejoin" then
 		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
 		end
 		if Value == "Serverhop" then
