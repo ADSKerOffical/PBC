@@ -1770,6 +1770,7 @@ module:Teleport(game.PlaceId)
 loadstring(game:HttpGet("https://pastebin.com/raw/stggPUBM", true))()
 		end
 	end    
+end
 })
 
 local Tab = Window:MakeTab({
