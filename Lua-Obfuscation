@@ -1729,6 +1729,49 @@ end
 	end    
 })
 
+Tab:AddDropdown({
+	Name = "Client Functions",
+	Default = "",
+	Options = {"Client Anti kick", "Clear error", "Anti Afk", "Rejoin", "Serverhop", "Chat logs"},
+	Callback = function(Value)
+		if Value == "Client Anti kick" then
+		local plr = game:GetService("Players").LocalPlayer
+
+getgenv().Anti = true -- Re-Execute if you change it
+
+local Anti
+Anti = hookmetamethod(game, "__namecall", function(self, ...)
+        if self == plr and getnamecallmethod():lower() == "kick" and getgenv().Anti then
+            return warn("[ANTI-KICK] Client Tried To Call Kick Function On LocalPlayer")
+        end
+        return Anti(self, ...)
+    end)
+		end
+		if Value == "Clear error" then
+		while wait(1) do
+game:GetService("GuiService"):ClearError()
+end
+        if Value == "Anti Afk" then
+        while wait() do
+        for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
+v:Disable()
+end
+        end
+		end
+		it Value == "Rejoin" then
+		game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, game.Players.LocalPlayer)
+		end
+		if Value == "Serverhop" then
+		local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
+
+module:Teleport(game.PlaceId)
+		end
+		if Value == "Chat logs" then
+loadstring(game:HttpGet("https://pastebin.com/raw/stggPUBM", true))()
+		end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
@@ -2361,6 +2404,27 @@ Tab:AddTextbox({
 })
 
 Tab:AddTextbox({
+	Name = "Reach sword",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+for i,v in pairs(game:GetService'Players'.LocalPlayer.Character:GetChildren()) do
+		if v:isA("Tool") then
+			local a = Instance.new("SelectionBox",v.Handle)
+			v.Handle.Massless = true
+			v.Handle.Transparency = 1
+			a.Adornee = v.Handle
+			v.Handle.Size = Vector3.new(Value, Value, Value)
+			local selectionBox = Instance.new("SelectionBox",v.Handle)
+			selectionBox.Adornee = v.Handle
+			selectionBox.Color3 = Color3.new(0, 0.313725, 0.47451)
+		end
+	end
+	end	  
+})
+
+
+Tab:AddTextbox({
 	Name = "???????",
 	Default = "input",
 	TextDisappear = true,
@@ -2625,8 +2689,7 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "Btools"
--- Added "RigType"
--- Added "Execute script"
+-- Added "Client Functions"
+-- Added "Reach sword"
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
