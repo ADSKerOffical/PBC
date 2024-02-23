@@ -1732,7 +1732,7 @@ end
 Tab:AddDropdown({
 	Name = "Client Functions",
 	Default = "",
-	Options = {"Client Anti kick", "Clear error", "Anti Afk", "Rejoin", "Serverhop", "Chat logs"},
+	Options = {"Client Anti kick", "Clear error", "Anti Afk", "Rejoin", "Serverhop", "Chat logs", "Client anti TP place", "Audio logger", "Simple spy", "Join low ping server"},
 	Callback = function(Value)
 		if Value == "Client Anti kick" then
 		local plr = game:GetService("Players").LocalPlayer
@@ -1770,6 +1770,100 @@ module:Teleport(game.PlaceId)
 loadstring(game:HttpGet("https://pastebin.com/raw/stggPUBM", true))()
 		end
 	end    
+if Value == "Client anti TP place" then
+local gui = game:GetService('StarterGui')
+local tele = game:GetService('TeleportService')
+local LocalPlayer = game:GetService('Players').LocalPlayer
+
+namecall = hookmetamethod(game, '__namecall', newcclosure(function(...)
+    if not checkcaller() then
+        local args = {...}
+        local self = args[1]
+        local method = getnamecallmethod()
+        
+        if method == 'Teleport' or method == 'TeleportToPlaceInstance' then
+            return gui:SetCore('SendNotification', {Title = 'Teleport Blocked', Text = 'Teleport successfully blocked'})
+        end
+    end
+
+    return namecall(...)
+end))
+
+local oldtp = hookfunction(tele.Teleport, function(...)
+    local plr, id = ...
+    if plr == LocalPlayer then
+        return gui:SetCore('SendNotification', {Title = 'Teleport Blocked', Text = 'Teleport successfully blocked'})
+    end
+    return oldtp(...)
+end)
+
+local oldttpi = hookfunction(tele.TeleportToPlaceInstance, function(...)
+    local plr, id = ...
+    if plr == LocalPlayer then
+        return gui:SetCore('SendNotification', {Title = 'Teleport Blocked', Text = 'Teleport successfully blocked'})
+    end
+    return oldttpi(...)
+end)
+
+return gui:SetCore('SendNotification', {Title = 'Anti-TP Loaded', Text = 'Written by Amiriki'})
+end
+if Value == "Audio logger" then
+loadstring(game:HttpGet("https://pastebin.com/raw/tj9B565T"))()
+end
+if Value == "Simple spy" then
+loadstring(game:HttpGet("https://github.com/exxtremestuffs/SimpleSpySource/raw/master/SimpleSpy.lua"))()
+end
+if Value == "Join low ping server" then
+local HTTPService = game:GetService("HttpService")
+local TeleportService = game:GetService("TeleportService")
+local StatsService = game:GetService("Stats")
+
+local function fetchServersData(placeId, limit)
+    local url = string.format("https://games.roblox.com/v1/games/%d/servers/Public?limit=%d", placeId, limit)
+    local success, response =
+        pcall(
+        function()
+            return HTTPService:JSONDecode(game:HttpGet(url))
+        end
+    )
+
+    if success and response and response.data then
+        return response.data
+    end
+
+    return nil
+end
+
+local placeId = game.PlaceId
+local serverLimit = 100
+local servers = fetchServersData(placeId, serverLimit)
+
+if not servers then
+    return
+end
+
+local lowestPingServer = servers[1]
+
+for _, server in pairs(servers) do
+    if server["ping"] < lowestPingServer["ping"] then
+        lowestPingServer = server
+    end
+end
+
+local commonLoadTime = 5
+task.wait(commonLoadTime)
+
+local pingThreshold = 100
+local serverStats = StatsService.Network.ServerStatsItem
+local dataPing = serverStats["Data Ping"]:GetValueString()
+local pingValue = tonumber(dataPing:match("(%d+)"))
+
+if pingValue >= pingThreshold then
+    TeleportService:TeleportToPlaceInstance(placeId, lowestPingServer.id)
+else
+    print("Unknown error 303")
+end
+end
 end
 })
 
