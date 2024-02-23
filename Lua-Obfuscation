@@ -2247,7 +2247,7 @@ Tab:AddDropdown({
 Tab:AddDropdown({
 	Name = "Btools",
 	Default = "1",
-	Options = {"Delete tool", "Clone tool", "Grab tool", "F3X", "Black hole tool", "White hole tool"},
+	Options = {"Delete tool", "Clone tool", "Grab tool", "F3X", "Black hole tool", "White hole tool", "Snatch tool", "Gravity hunchback"},
 	Callback = function(Value)
 		if Value == "Delete tool" then
 		backpack = game:GetService("Players").LocalPlayer.Backpack
@@ -2361,6 +2361,69 @@ end)
 
 tool.Parent = game.Players.LocalPlayer.Backpack
 		end
+if Value == "Snatch tool" then
+local TweenService = game:GetService("TweenService")
+local tool = Instance.new("Tool")
+tool.Name = "Snatch Tool"
+tool.RequiresHandle = false
+local distance = 40
+local cooldown = 1 -- Кулдаун в секундах, чтобы избежать спама
+
+local isCooldown = false
+
+tool.Activated:Connect(function()
+    if isCooldown then return end
+    isCooldown = true
+    
+    local character = tool.Parent
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        -- Вычисляем новую позицию
+        local newCFrame = humanoidRootPart.CFrame * CFrame.new(0, 0, -distance)
+        
+        -- Создаем твин
+        local tweenInfo = TweenInfo.new(
+            0.2, -- Длительность анимации в секундах
+            Enum.EasingStyle.Linear, -- Стиль изменения (линейный делает движение равномерным)
+            Enum.EasingDirection.Out, -- Направление изменения
+            0, -- Количество повторений (0 означает без повторений)
+            false, -- Необходимость обратного движения
+            0 -- Задержка перед началом анимации
+        )
+        local tween = TweenService:Create(humanoidRootPart, tweenInfo, {CFrame = newCFrame})
+        
+        tween:Play() -- Начинаем анимацию
+        tween.Completed:Wait() -- Ждем окончания анимации
+    end
+    
+    -- Устанавливаем кулдаун
+    wait(cooldown)
+    isCooldown = false
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+if Value == "Gravity hunchback" then
+local tool = Instance.new("Tool") -- Создаем инструмент для игрока
+tool.Name = "Gravity hunchback" -- Название инструмента
+tool.RequiresHandle = false -- Инструмент не требует наличия ручки
+tool.TextureId = "rbxassetid://16474099635"
+tool.Activated:Connect(function()
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+    local clickPosition = mouse.Hit.p -- Получаем позицию клика
+
+    for _, item in pairs(workspace:GetDescendants()) do
+        if item:IsA("Part") or item:IsA("MeshPart") then -- Проверяем, является ли объект частью с физикой
+            if item.Anchored == false then
+                item:ApplyImpulse((clickPosition - item.Position).unit * 75)
+            end
+        end
+    end
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
 	end    
 })
 
