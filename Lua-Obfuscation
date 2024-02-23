@@ -2341,7 +2341,7 @@ Tab:AddDropdown({
 Tab:AddDropdown({
 	Name = "Btools",
 	Default = "1",
-	Options = {"Delete tool", "Clone tool", "Grab tool", "F3X", "Black hole tool", "White hole tool", "Snatch tool", "Gravity hunchback"},
+	Options = {"Delete tool", "Clone tool", "Grab tool", "F3X", "Black hole tool", "White hole tool", "Snatch tool", "Gravity hunchback", "Push tool"},
 	Callback = function(Value)
 		if Value == "Delete tool" then
 		backpack = game:GetService("Players").LocalPlayer.Backpack
@@ -2461,7 +2461,7 @@ local tool = Instance.new("Tool")
 tool.Name = "Snatch Tool"
 tool.RequiresHandle = false
 local distance = 40
-local cooldown = 0 -- Кулдаун в секундах, чтобы избежать спама
+local cooldown = 1 -- Кулдаун в секундах, чтобы избежать спама
 
 local isCooldown = false
 
@@ -2488,6 +2488,16 @@ tool.Activated:Connect(function()
         
         tween:Play() -- Начинаем анимацию
         tween.Completed:Wait() -- Ждем окончания анимации
+        
+        -- Отталкиваем неприкрепленные объекты
+        local parts = workspace:GetDescendants()
+        for _, part in ipairs(parts) do
+            if part:IsA("BasePart") and not part:IsDescendantOf(character) and part.Anchored == false then
+                local direction = (part.Position - humanoidRootPart.Position).Unit
+                local force = direction * 1000 -- Можно изменить силу отталкивания здесь
+                part.Velocity = force
+            end
+        end
     end
     
     -- Устанавливаем кулдаун
@@ -2497,23 +2507,36 @@ end)
 
 tool.Parent = game.Players.LocalPlayer.Backpack
 end
-if Value == "Gravity hunchback" then
-local tool = Instance.new("Tool") -- Создаем инструмент для игрока
-tool.Name = "Gravity hunchback" -- Название инструмента
-tool.RequiresHandle = false -- Инструмент не требует наличия ручки
-tool.TextureId = "rbxassetid://16474099635"
-tool.Activated:Connect(function()
-    local player = game.Players.LocalPlayer
-    local mouse = player:GetMouse()
-    local clickPosition = mouse.Hit.p -- Получаем позицию клика
+if Value == "Push tool" then
+local tool = Instance.new("Tool")
+tool.Name = "Push Tool"
+tool.RequiresHandle = false
+local distance = 50
+local cooldown = 0
 
-    for _, item in pairs(workspace:GetDescendants()) do
-        if item:IsA("Part") or item:IsA("MeshPart") then -- Проверяем, является ли объект частью с физикой
-            if item.Anchored == false then
-                item:ApplyImpulse((clickPosition - item.Position).unit * 75)
+local isCooldown = false
+
+tool.Activated:Connect(function()
+    if isCooldown then return end
+    isCooldown = true
+    
+    local character = tool.Parent
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        -- Отталкиваем неприкрепленные объекты
+        local parts = workspace:GetDescendants()
+        for _, part in ipairs(parts) do
+            if part:IsA("BasePart") and part.Anchored == false and not part:IsDescendantOf(character) then
+                local direction = (part.Position - humanoidRootPart.Position).Unit
+                local force = direction * 1000 -- Можно изменить силу отталкивания здесь
+                part.Velocity = force
             end
         end
     end
+    
+    -- Устанавливаем кулдаун
+    wait(cooldown)
+    isCooldown = false
 end)
 
 tool.Parent = game.Players.LocalPlayer.Backpack
