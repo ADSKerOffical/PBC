@@ -2461,7 +2461,7 @@ local tool = Instance.new("Tool")
 tool.Name = "Snatch Tool"
 tool.RequiresHandle = false
 local distance = 40
-local cooldown = 1 -- Кулдаун в секундах, чтобы избежать спама
+local cooldown = 0 -- Кулдаун в секундах, чтобы избежать спама
 
 local isCooldown = false
 
