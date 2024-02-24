@@ -880,14 +880,15 @@ OrionLib:MakeNotification({
 })
 		end
 if Value == "Find user id" then
-local player = game.Players.LocalPlayer
+-- Получаем всех игроков в игре
+local players = game.Players:GetPlayers()
 
--- Получаем имя пользователя и его ID
-local playerName = player.Name
-local playerId = player.UserId
-
--- Выводим имя пользователя и его ID в консоль
-print("Username: " .. playerName .. ", ID user: " ..playerId .. "")
+-- Перебираем всех игроков и выводим их имя и ID в консоль
+for _, player in ipairs(players) do
+    local playerName = player.Name
+    local playerId = player.UserId
+    print("Username: " .. playerName .. ", ID user: " .. playerId)
+end
 
 Spooky = Instance.new("Sound", game.Workspace)
 Spooky.Name = "Spooky"
@@ -1017,7 +1018,7 @@ end
 Tab:AddDropdown({
 	Name = "Animations",
 	Default = "",
-	Options = {"Quick Bang", "Quick Dance", "Freeze Anims", "Holding", "Holding v2", "Holding v3", "I'll get a buzz right now", "Blow", "Dab"},
+	Options = {"Quick Bang", "Quick Dance", "Freeze Anims", "Holding", "Holding v2", "Holding v3", "I'll get a buzz right now", "Blow", "Dab", "Im watching you", Holding v4", "Holding v5", "Epic dance", "Crazy dance", "Throw away", "Sit animation"},
 	Callback = function(Value)
 	if Value == "Quick Bang" then
 	local Anim = Instance.new("Animation")
@@ -1078,6 +1079,55 @@ end
 if Value == "Dab" then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://183412246"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Im watching you" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://86504773"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Holding v4" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://90720825"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Holding v5" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://243761991"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Epic dance" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://27789359"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Crazy dance" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://86258575"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+If Value == "Throw away" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://48534664"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Sit animation" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://178130996"
 local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
 k:Play()
 k:AdjustSpeed(1)
