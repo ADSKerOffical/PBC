@@ -1118,7 +1118,7 @@ local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimatio
 k:Play()
 k:AdjustSpeed(1)
 end
-If Value == "Throw away" then
+if Value == "Throw away" then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://48534664"
 local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
