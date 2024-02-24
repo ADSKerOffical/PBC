@@ -2477,6 +2477,7 @@ grabTool.Parent = backpack
 if Value == "F3X" then
 loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
 		end
+end
 		if Value == "Black hole tool" then
 		local tool = Instance.new("Tool")
 tool.RequiresHandle = false -- Исправлена опечатка здесь
