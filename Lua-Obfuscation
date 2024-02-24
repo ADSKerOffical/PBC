@@ -2341,7 +2341,7 @@ Tab:AddDropdown({
 Tab:AddDropdown({
 	Name = "Btools",
 	Default = "1",
-	Options = {"Delete tool", "Clone tool", "Grab tool", "F3X", "Black hole tool", "White hole tool", "Snatch tool", "Gravity hunchback", "Push tool"},
+	Options = {"Delete tool", "Clone tool", "Grab tool", "F3X", "Black hole tool", "White hole tool", "Snatch tool", "Gravity hunchback", "Push tool", "Explosion tool", "Neo Focus"},
 	Callback = function(Value)
 		if Value == "Delete tool" then
 		backpack = game:GetService("Players").LocalPlayer.Backpack
@@ -2534,6 +2534,67 @@ tool.Activated:Connect(function()
         end
     end
     
+    -- Устанавливаем кулдаун
+    wait(cooldown)
+    isCooldown = false
+end)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+end
+if Value == "Explosion tool" then
+local tool = Instance.new("Tool")
+tool.Name = "Explosion tool"
+tool.RequiresHandle = fasle
+tool.Parent = game.Players.LocalPlayer.Backpack -- Предполагается, что скрипт находится внутри инструмента
+local explosionRadius = 10 -- Радиус взрыва
+
+local function createExplosion(position)
+    local explosion = Instance.new("Explosion")
+    explosion.Position = position
+    explosion.BlastRadius = explosionRadius
+    explosion.Parent = workspace
+end
+
+tool.Activated:Connect(function()
+    local mouse = game.Players.LocalPlayer:GetMouse()
+    local targetPosition = mouse.Hit.Position
+    createExplosion(targetPosition)
+    Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://5801257793"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 1
+Spooky.Looped = fasle
+Spooky:Play()
+end)
+end
+if Value == "Neo Focus" then
+local tool = Instance.new("Tool")
+tool.Name = "Neo Focus"
+tool.RequiresHandle = false
+local distance = 100
+local cooldown = 0
+
+local isCooldown = false
+
+tool.Activated:Connect(function()
+    if isCooldown then return end
+    isCooldown = true
+    
+    local character = tool.Parent
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        -- Отталкиваем неприкрепленные объекты
+        local parts = workspace:GetDescendants()
+        for _, part in ipairs(parts) do
+            if part:IsA("BasePart") and part.Anchored == false and not part:IsDescendantOf(character) then
+                local direction = (part.Position - humanoidRootPart.Position).Unit
+                local force = direction * 10e6 -- Можно изменить силу отталкивания здесь
+                part.Velocity = force
+            end
+        end
+    end
+ 
     -- Устанавливаем кулдаун
     wait(cooldown)
     isCooldown = false
