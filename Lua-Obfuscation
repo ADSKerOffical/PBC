@@ -907,7 +907,7 @@ end
 if Value == "Find place id" then
 local placeId = game.PlaceId
 
-print("place ID: ".. placeId ..")
+print("place ID: ".. placeId .."")
 setclipboard(placeId)
 
 Spooky = Instance.new("Sound", game.Workspace)
