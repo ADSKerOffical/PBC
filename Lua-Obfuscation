@@ -19,7 +19,7 @@ local Window = OrionLib:MakeWindow({Name = "Budgie Hub", HidePremium = true, Int
 
 local Tab = Window:MakeTab({
 	Name = "Main",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://16505492881",
 	PremiumOnly = false
 })
 
@@ -694,7 +694,7 @@ wait()
 
 Spooky = Instance.new("Sound", game.Workspace)
 Spooky.Name = "Spooky"
-Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.SoundId = "rbxassetid://16505492881"
 Spooky.Volume = 1
 Spooky.PlaybackSpeed = 2
 Spooky.Looped = fasle
@@ -703,7 +703,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 		end
@@ -731,7 +731,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://116505492881",
 	Time = 5
 })
 		end
@@ -784,7 +784,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 		end
@@ -807,7 +807,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 		end
@@ -842,7 +842,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 		end
@@ -875,7 +875,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 		end
@@ -900,7 +900,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 end
@@ -921,7 +921,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 end
@@ -957,7 +957,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://16336200609",
+	Image = "rbxassetid://16505492881",
 	Time = 5
 })
 end
@@ -1011,13 +1011,6 @@ lp = game:GetService("Players").LocalPlayer
   end
 task.wait()
 end
-   end    
-})
-
-Tab:AddButton({
- Name = "Audio stealer",
- Callback = function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/tj9B565T"))()
    end    
 })
 
@@ -1966,7 +1959,7 @@ end
 
 local Tab = Window:MakeTab({
 	Name = "Misc",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://16336200609",
 	PremiumOnly = false
 })
 
@@ -2159,30 +2152,6 @@ plr.CameraMinZoomDistance = 0
    end    
 })
 
-Tab:AddButton({
- Name = "Gravity hunchback",
- Callback = function()
-local tool = Instance.new("Tool") -- Создаем инструмент для игрока
-tool.Name = "Gravity hunchback" -- Название инструмента
-tool.RequiresHandle = false -- Инструмент не требует наличия ручки
-tool.Activated:Connect(function()
-    local player = game.Players.LocalPlayer
-    local mouse = player:GetMouse()
-    local clickPosition = mouse.Hit.p -- Получаем позицию клика
-
-    for _, item in pairs(workspace:GetDescendants()) do
-        if item:IsA("Part") or item:IsA("MeshPart") then -- Проверяем, является ли объект частью с физикой
-            if item.Anchored == false then
-                item:ApplyImpulse((clickPosition - item.Position).unit * 75)
-            end
-        end
-    end
-end)
-
-tool.Parent = game.Players.LocalPlayer.Backpack
-   end    
-})
-
 Tab:AddDropdown({
 	Name = "Kill all versions",
 	Default = "",
@@ -2220,7 +2189,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
  Name = "Budgie Hub",
  Content = "This function kills everyone sword, but works in some modes",
- Image = "rbxassetid://9139566624",
+ Image = "rbxassetid://16336200609",
  Time = 10
 })
 		end
@@ -2260,7 +2229,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
  Name = "Budgie Hub",
  Content = "This function kills everyone sword, but it works on all the tools you wear",
- Image = "rbxassetid://9139566624",
+ Image = "rbxassetid://16336200609",
  Time = 10
 })
 		end
@@ -2307,7 +2276,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
  Name = "Budgie Hub",
  Content = "This function kills everyone sword, besides your friends",
- Image = "rbxassetid://9139566624",
+ Image = "rbxassetid://16336200609",
  Time = 10
 })
 		end
@@ -2352,7 +2321,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
  Name = "Budgie Hub",
  Content = "Merger *Multi kill all* and *Anti kill friends*",
- Image = "rbxassetid://9139566624",
+ Image = "rbxassetid://16336200609",
  Time = 10
 })
 		end
@@ -2465,7 +2434,6 @@ grabTool.BinType = 2
 grabTool.Parent = backpack
 if Value == "F3X" then
 loadstring(game:GetObjects("rbxassetid://6695644299")[1].Source)()
-end
 		end
 		if Value == "Black hole tool" then
 		local tool = Instance.new("Tool")
@@ -3091,7 +3059,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "Credit",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://16505495276",
 	PremiumOnly = false
 })
 
