@@ -1017,7 +1017,7 @@ end
 Tab:AddDropdown({
 	Name = "Animations",
 	Default = "",
-	Options = {"Quick Bang", "Quick Dance", "Freeze Anims"},
+	Options = {"Quick Bang", "Quick Dance", "Freeze Anims", "Holding", "Holding v2", "Holding v3", "I'll get a buzz right now", "Blow", "Dab"},
 	Callback = function(Value)
 	if Value == "Quick Bang" then
 	local Anim = Instance.new("Animation")
