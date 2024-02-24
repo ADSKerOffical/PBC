@@ -703,7 +703,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
+	Image = "rbxassetid://16336200609",
 	Time = 5
 })
 		end
@@ -731,7 +731,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
+	Image = "rbxassetid://16336200609",
 	Time = 5
 })
 		end
@@ -741,7 +741,7 @@ OrionLib:MakeNotification({
 Tab:AddDropdown({
 	Name = "Finders",
 	Default = "",
-	Options = {"Parts finder", "Animation finder", "Animation finder v2", "Gear name finder"},
+	Options = {"Parts finder", "Animation finder", "Animation finder v2", "Gear name finder", "Find user id", "Find place id", "Find CFrame"},
 	Callback = function(Value)
 		if Value == "Parts finder" then
 		local player = game.Players.LocalPlayer
@@ -784,7 +784,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
+	Image = "rbxassetid://16336200609",
 	Time = 5
 })
 		end
@@ -807,7 +807,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
+	Image = "rbxassetid://16336200609",
 	Time = 5
 })
 		end
@@ -842,7 +842,7 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
+	Image = "rbxassetid://16336200609",
 	Time = 5
 })
 		end
@@ -875,10 +875,92 @@ Spooky:Play()
 OrionLib:MakeNotification({
 	Name = "Budgie Hub",
 	Content = "Information has been sent to the console",
-	Image = "rbxassetid://9139566624",
+	Image = "rbxassetid://16336200609",
 	Time = 5
 })
 		end
+if Value == "Find user id" then
+local player = game.Players.LocalPlayer
+
+-- Получаем имя пользователя и его ID
+local playerName = player.Name
+local playerId = player.UserId
+
+-- Выводим имя пользователя и его ID в консоль
+print("Username: " .. playerName .. ", ID user: " ..playerId .. "")
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://16336200609",
+	Time = 5
+})
+end
+if Value == "Find place id" then
+local placeId = game.PlaceId
+
+print("place ID: ".. placeId ..")
+setclipboard(placeId)
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://16336200609",
+	Time = 5
+})
+end
+if Value == "Find CFrame" then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Получаем CFrame локального игрока
+local function getPlayerCFrame()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local playerCFrame = humanoidRootPart.CFrame
+
+    -- Получаем координаты X, Y и Z из CFrame
+    local x = playerCFrame.X
+    local y = playerCFrame.Y
+    local z = playerCFrame.Z
+
+    -- Выводим координаты X, Y и Z в консоль
+    print("Local Player CFrame: X: " .. x .. ", Y: " .. y .. ", Z: " .. z)
+    game:GetService("GuiService"):CopyToClipboard("X: " .. x .. ", Y: " .. y .. ", Z: " .. z)
+end
+
+getPlayerCFrame()
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Information has been sent to the console",
+	Image = "rbxassetid://16336200609",
+	Time = 5
+})
+end
 	end    
 })
 
