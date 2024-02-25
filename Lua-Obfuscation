@@ -2049,6 +2049,88 @@ end
 end
 })
 
+Tab:AddButton({
+ Name = "Anti fling",
+ Callback = function()
+        while true do
+local Services = setmetatable({}, {__index = function(Self, Index)
+local NewService = game.GetService(game, Index)
+if NewService then
+Self[Index] = NewService
+end
+return NewService
+end})
+
+-- [ LocalPlayer ] --
+local LocalPlayer = Services.Players.LocalPlayer
+
+-- // Functions \\ --
+local function PlayerAdded(Player)
+   local Detected = false
+   local Character;
+   local PrimaryPart;
+
+   local function CharacterAdded(NewCharacter)
+       Character = NewCharacter
+       repeat
+           wait()
+           PrimaryPart = NewCharacter:FindFirstChild("HumanoidRootPart")
+       until PrimaryPart
+       Detected = false
+   end
+
+   CharacterAdded(Player.Character or Player.CharacterAdded:Wait())
+   Player.CharacterAdded:Connect(CharacterAdded)
+   Services.RunService.Heartbeat:Connect(function()
+       if (Character and Character:IsDescendantOf(workspace)) and (PrimaryPart and PrimaryPart:IsDescendantOf(Character)) then
+           if PrimaryPart.AssemblyAngularVelocity.Magnitude > 1 or PrimaryPart.AssemblyLinearVelocity.Magnitude > 1 then
+               if Detected == false then
+             
+               end
+               Detected = true
+               for i,v in ipairs(Character:GetDescendants()) do
+                   if v:IsA("BasePart") then
+                       v.CanCollide = false
+                       v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+                       v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+                       v.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+                   end
+               end
+               PrimaryPart.CanCollide = false
+               PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+               PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+               PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+           end
+       end
+   end)
+end
+
+for i,v in ipairs(Services.Players:GetPlayers()) do
+   if v ~= LocalPlayer then
+       PlayerAdded(v)
+   end
+end
+Services.Players.PlayerAdded:Connect(PlayerAdded)
+
+local LastPosition = nil
+Services.RunService.Heartbeat:Connect(function()
+   pcall(function()
+       local PrimaryPart = LocalPlayer.Character.PrimaryPart
+       if PrimaryPart.AssemblyLinearVelocity.Magnitude > 200 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 200 then
+           PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+           PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+           PrimaryPart.CFrame = LastPosition
+
+       elseif PrimaryPart.AssemblyLinearVelocity.Magnitude < 50 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 then
+           LastPosition = PrimaryPart.CFrame
+       end
+   end)
+end)
+  wait(5)
+  end
+   end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
@@ -2913,8 +2995,6 @@ Tab:AddToggle({
  Name = "Admin detector",
  Default = fasle,
  Callback = function(Value)
-local ADS = Value
-        while ADS do
 local ownerId = game.CreatorId
 
 game.Players.PlayerAdded:Connect(function(player)
@@ -2927,7 +3007,6 @@ game.Players.PlayerAdded:Connect(function(player)
 })
     end
 end)
-end
    end    
 })
 
@@ -2943,6 +3022,127 @@ if v.Name == "BoomBox" then v:Destroy() end
    end
 end
    end    
+})
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
+
+local Window = OrionLib:MakeWindow({Name = "Budgie Hub", HidePremium = true, IntroEnabled = false, SaveConfig = false, ConfigFolder = "OrionTest"})
+
+local Tab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Tab:AddTextbox({
+    Name = "Goto player",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(Value)
+    PlayerName = Value
+local function findPlayer(name)
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player.Name:lower():match(name:lower()) or player.DisplayName:lower():match(name:lower()) then
+            return player
+        end
+    end
+    return nil
+end
+
+-- Функция для телепортации локального игрока к другому игроку
+local function teleportToPlayer(targetPlayer)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+    local targetCharacter = targetPlayer.Character or targetPlayer.CharacterAdded:Wait()
+    local targetHumanoidRootPart = targetCharacter:WaitForChild("HumanoidRootPart")
+
+    humanoidRootPart.CFrame = targetHumanoidRootPart.CFrame
+end
+
+-- Пример использования: телепортируемся к игроку по его имени пользователя или отображаемому имени
+local targetName = PlayerName
+local targetPlayer = findPlayer(targetName)
+
+if targetPlayer then
+    teleportToPlayer(targetPlayer)
+else
+    print("Игрок не найден")
+end
+  end
+})
+
+Tab:AddButton({
+    Name = "ESP",
+    Callback = function()
+         local function highlightPlayers()
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            local highlight = Instance.new("BoxHandleAdornment")
+            highlight.Name = "PlayerHighlight"
+            highlight.Size = player.Character.HumanoidRootPart.Size + Vector3.new(0.2, 0.2, 0.2)
+            highlight.Color3 = Color3.fromRGB(0, 255, 0) -- Можно изменить цвет подсветки
+            highlight.Transparency = 0.5 -- Можно изменить прозрачность подсветки
+            highlight.AlwaysOnTop = true
+            highlight.Adornee = player.Character.HumanoidRootPart
+            highlight.Parent = player.Character.HumanoidRootPart
+            
+            local label = Instance.new("BillboardGui")
+            label.Name = "PlayerLabel"
+            label.Size = UDim2.new(0, 100, 0, 20)
+            label.StudsOffset = Vector3.new(0, 3, 0)
+            label.AlwaysOnTop = true
+            label.Adornee = player.Character.HumanoidRootPart
+            label.Parent = player.Character.HumanoidRootPart
+            
+            local text = Instance.new("TextLabel")
+            text.Name = "HealthLabel"
+            text.Size = UDim2.new(1, 0, 1, 0)
+            text.BackgroundTransparency = 1
+            text.TextColor3 = Color3.new(1, 1, 1)
+            text.TextStrokeTransparency = 0.5
+            text.TextStrokeColor3 = Color3.new(0, 0, 0)
+            text.Font = Enum.Font.SourceSansBold
+            text.TextSize = 14
+            text.Text = player.Name .. " - " .. player.Character.Humanoid.Health
+            text.Parent = label
+        end
+    end
+end
+
+game.Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        character:WaitForChild("HumanoidRootPart")
+        highlightPlayers()
+    end)
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    local highlight = player.Character and player.Character:FindFirstChild("PlayerHighlight")
+    if highlight then
+        highlight:Destroy()
+    end
+    
+    local label = player.Character and player.Character:FindFirstChild("PlayerLabel")
+    if label then
+        label:Destroy()
+    end
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        local label = player.Character and player.Character:FindFirstChild("PlayerLabel")
+        if label then
+            local text = label:FindFirstChild("HealthLabel")
+            if text then
+                text.Text = player.Name .. " - " .. player.Character.Humanoid.Health
+            end
+        end
+    end
+end)
+
+highlightPlayers()
+    end    
 })
 
 Tab:AddTextbox({
@@ -3210,10 +3410,8 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "Radgoll tools"
--- Added "SS characters"
--- Added "Admin detector"
--- Added "Mute boombox"
--- Modification "Btools"
+-- Added "ESP"
+-- Added "Goto player"
+-- Added "Anti fling"
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
