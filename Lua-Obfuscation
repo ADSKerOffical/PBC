@@ -2116,12 +2116,12 @@ local LastPosition = nil
 Services.RunService.Heartbeat:Connect(function()
    pcall(function()
        local PrimaryPart = LocalPlayer.Character.PrimaryPart
-       if PrimaryPart.AssemblyLinearVelocity.Magnitude > 200 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 200 then
+       if PrimaryPart.AssemblyLinearVelocity.Magnitude > 2e90 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 2e90 then
            PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
            PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
            PrimaryPart.CFrame = LastPosition
 
-       elseif PrimaryPart.AssemblyLinearVelocity.Magnitude < 50 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 50 then
+       elseif PrimaryPart.AssemblyLinearVelocity.Magnitude < 5e90 or PrimaryPart.AssemblyAngularVelocity.Magnitude > 5e90 then
            LastPosition = PrimaryPart.CFrame
        end
    end)
