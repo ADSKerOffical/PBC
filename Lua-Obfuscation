@@ -3142,6 +3142,10 @@ Tab:AddButton({
    end    
 })
 
+local Section = Tab:AddSection({
+	Name = "Secret"
+})
+
 Tab:AddTextbox({
 	Name = "???????",
 	Default = "input",
@@ -3327,6 +3331,13 @@ end
 end
 end
      end
+})
+
+Tab:AddButton({
+ Name = "NekoArc.Exe",
+ Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/KW0NTUp6"))()
+   end    
 })
 
 local Section = Tab:AddSection({
