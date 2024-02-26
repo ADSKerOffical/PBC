@@ -3135,6 +3135,13 @@ highlightPlayers()
     end    
 })
 
+Tab:AddButton({
+ Name = "Fling GUI",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/FlingPlayers/main/FlingGUI"))()
+   end    
+})
+
 Tab:AddTextbox({
 	Name = "???????",
 	Default = "input",
