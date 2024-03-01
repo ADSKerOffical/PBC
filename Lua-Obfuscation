@@ -3202,7 +3202,7 @@ publicItalics = true
 privateProperties = {
     Color = Color3.fromRGB(0,210,0); 
     Font = Enum.Font.SourceSansBold;
-    TextSize = 20;
+    TextSize = 7;
 }
 local StarterGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
@@ -3265,6 +3265,101 @@ camera.HeadLocked = false
 camera.HeadScale = 1
 camera.CameraSubject = player.Character.Humanoid
 camera.CFrame = CFrame.new(Vector3.new(0, 5, -10), Vector3.new(0, 0, 0))
+   end    
+})
+
+Tab:AddTextbox({
+    Name = "Headsize",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(Value)
+        local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local head = character:WaitForChild("Head")
+
+local originalSize = head.Size
+local newSize = Vector3.new(originalSize.X * Value, originalSize.Y * Value, originalSize.Z * Value)
+
+humanoid.Died:Connect(function()
+    head.Size = originalSize
+end)
+
+head.Size = newSize
+    end      
+})
+
+Tab:AddButton({
+ Name = "Remove fog",
+ Callback = function()
+        game.Lighting.FogEnd = math.huge
+game.Lighting.FogStart = math.huge 
+game.Lighting.FogColor = Color3.new(0, 0, 0)
+   end    
+})
+
+Tab:AddButton({
+ Name = "Sit NPCs",
+ Callback = function()
+local CollectionService = game:GetService("CollectionService")
+
+local function makeNPCsSit()
+    local NPCs = CollectionService:GetTagged("NPC")
+    
+    for _, npc in ipairs(NPCs) do
+        local humanoid = npc:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            humanoid.Sit = true
+        end
+    end
+end
+
+makeNPCsSit()
+   end    
+})
+
+Tab:AddButton({
+ Name = "Anti killbrick",
+ Callback = function()
+ 
+ OrionLib:MakeNotification({
+    Name = "Budgie Hub",
+    Content = "To disable this script, do a reset or die",
+    Image = "rbxassetid://16336200609",
+    Time = 7
+})
+
+local player = game:GetService("Players").LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local humanoid = character:WaitForChild("Humanoid")
+
+local function disableTouch()
+    while humanoid.Health > 0 and humanoidRootPart:IsDescendantOf(workspace) do
+        local parts = workspace:GetPartBoundsInRadius(humanoidRootPart.Position, 10)
+        for _, part in ipairs(parts) do
+            part.CanTouch = false
+        end
+        task.wait()
+    end
+end
+
+disableTouch()
+   end    
+})
+
+Tab:AddButton({
+ Name = "Godmode v1.0",
+ Callback = function()
+ local GodMv1 = true
+        while GodMv1 do
+  wait(0.1)
+if game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 then
+last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
+wait(4)
+game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy 
+end
+end
    end    
 })
 
@@ -3544,8 +3639,16 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "ESP"
--- Added "Goto player"
--- Added "Anti fling"
+-- Added "Fling GUI"
+-- Added "Anti sit"
+-- Added "2017 style"
+-- Added "Chat spy"
+-- Added "Fix camera"
+-- Added "Headsize"
+-- Added "Remove fog"
+-- Added "Sit NPCs"
+-- Added "Anti killbrick"
+-- Added "Godmode v1.0"
+-- this script has been subjected to 100 commits
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
