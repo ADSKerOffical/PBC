@@ -2159,7 +2159,7 @@ Tab:AddToggle({
  Callback = function(Value)
  ABH = Value
  while ABH do
-   task.wait()
+   wait()
         last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(9e8, 9e8, 9e8) 
     game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy
