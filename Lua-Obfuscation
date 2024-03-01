@@ -2153,6 +2153,20 @@ Tab:AddButton({
    end    
 })
 
+Tab:AddToggle({
+ Name = "Anti Bang / Headsit",
+ Default = fasle,
+ Callback = function(Value)
+ ABH = Value
+ while ABH do
+   task.wait()
+        last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(9e8, 9e8, 9e8) 
+    game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy
+   end    
+   end
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
@@ -3639,16 +3653,7 @@ Tab:AddButton({
 
 aText = [[
 :
--- Added "Fling GUI"
--- Added "Anti sit"
--- Added "2017 style"
--- Added "Chat spy"
--- Added "Fix camera"
--- Added "Headsize"
--- Added "Remove fog"
--- Added "Sit NPCs"
--- Added "Anti killbrick"
--- Added "Godmode v1.0"
--- this script has been subjected to 100 commits
+-- Added "Anti Bang / Headsit"
+-- this script was subjected to 100 Commits
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
