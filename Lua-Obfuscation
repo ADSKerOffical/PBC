@@ -3202,7 +3202,7 @@ publicItalics = true
 privateProperties = {
     Color = Color3.fromRGB(0,210,0); 
     Font = Enum.Font.SourceSansBold;
-    TextSize = 7;
+    TextSize = 14;
 }
 local StarterGui = game:GetService("StarterGui")
 local Players = game:GetService("Players")
