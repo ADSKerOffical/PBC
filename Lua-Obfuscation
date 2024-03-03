@@ -3489,7 +3489,7 @@ Tab:AddDropdown({
 })
 
 Tab:AddTextbox({
-    Name = "Doxxing 1.0",
+    Name = "Doxxing 1.1",
     Default = "Name",
     TextDisappear = true,
     Callback = function(Value)
@@ -3615,6 +3615,72 @@ if player then
         end
     else
         print("nil")
+    end
+else
+    print("nil")
+end
+
+local nameToFind = Value
+
+-- Преобразуем критерий поиска в нижний регистр
+nameToFind = string.lower(nameToFind)
+
+-- Находим игрока по части имени
+local function findPlayerByName(name)
+    for _, player in pairs(game.Players:GetPlayers()) do
+        local playerName = string.lower(player.Name)
+        if string.find(playerName, name) then
+            return player
+        end
+    end
+    return nil
+end
+
+local player = findPlayerByName(nameToFind)
+if player then
+    local playerId = player.UserId
+    print("ID: " .. playerId)
+else
+    print("nil")
+end
+
+local nameToFind = Value
+
+-- Преобразуем часть имени в нижний регистр
+nameToFind = string.lower(nameToFind)
+
+-- Функция поиска игрока по части имени
+local function findPlayerByName(name)
+    for _, player in pairs(game.Players:GetPlayers()) do
+        local playerName = string.lower(player.Name)
+        if string.find(playerName, name) then
+            return player
+        end
+    end
+    return nil
+end
+
+local player = findPlayerByName(nameToFind)
+if player then
+    local magnitudes = {} -- Список для хранения магнидуты
+    local character = player.Character
+
+    if character then
+        for _, part in ipairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                local magnitude = part.Position.magnitude
+                table.insert(magnitudes, magnitude)
+            end
+        end
+
+        local totalMagnitude = 0
+        for _, mag in ipairs(magnitudes) do
+            totalMagnitude = totalMagnitude + mag
+        end
+
+        print("Magnitude: " .. totalMagnitude)
+    else
+        print("0")
     end
 else
     print("nil")
