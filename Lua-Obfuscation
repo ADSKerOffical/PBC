@@ -3696,6 +3696,20 @@ OrionLib:MakeNotification({
     end      
 })
 
+Tab:AddToggle({
+ Name = "Ghost mode",
+ Callback = function(Value)
+        ABH = Value
+ while ABH do
+   game:GetService("RunService").Heartbeat:Wait()
+        last_pick_sin_mrazy = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(9e8, 9e8, 9e8) 
+game:GetService("RunService").Heartbeat:Wait()
+    game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mrazy
+   end
+   end    
+})
+
 local Section = Tab:AddSection({
 	Name = "Secret"
 })
