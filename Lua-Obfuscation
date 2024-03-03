@@ -3426,6 +3426,210 @@ end
    end    
 })
 
+Tab:AddButton({
+ Name = "Flip character",
+ Callback = function()
+        local lp = game:GetService("Players").LocalPlayer
+local c = lp.Character
+local hrp0 = c:FindFirstChild("HumanoidRootPart")
+local hrp1 = hrp0:Clone()
+c.Parent = nil
+hrp0.Parent = hrp1
+hrp0.RootJoint.Part0 = nil
+hrp1.Parent = c
+c.Parent = workspace
+local h = game:GetService("RunService").Heartbeat
+hrp0.Transparency = 0.3
+while h:Wait() and c and c.Parent do
+    hrp0.CFrame = hrp1.CFrame
+    hrp0.Orientation += Vector3.new(0, 0, 180)
+    hrp0.Position -= Vector3.new(0, 1, 0)
+    hrp0.Velocity = hrp1.Velocity
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "State player",
+ Callback = function()
+        local player = game.Players.LocalPlayer
+local humanoid = player.Character.Humanoid
+
+print(humanoid:GetState())
+   end    
+})
+
+Tab:AddDropdown({
+    Name = "Admin scripts",
+    Default = "",
+    Options = {"Infinite yield", "Nameless admin", "Reviz admin", "CMD-X", "Homebrew admin", "Fates admin", "Iv admin"},
+    Callback = function(Value)
+        if Value == "Infinite yield" then
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+        end
+        if Value == "Nameless admin" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))()
+        end
+        if Value == "Reviz admin" then
+        loadstring(game:HttpGet("https://pastebin.com/raw/SdfBVYDA"))()
+        end
+        if Value == "CMD-X" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source"))()
+        end
+        if Value == "Homebrew admin" then
+        loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Syntaxx64/HomebrewAdmin/master/Main"))()
+        end
+        if Value == "Fates admin" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))()
+        end
+        if Value == "Iv admin" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/BloodyBurns/Hex/main/Iv%20Admin%20v3.lua"))()
+        end
+    end    
+})
+
+Tab:AddTextbox({
+    Name = "Doxxing 1.0",
+    Default = "Name",
+    TextDisappear = true,
+    Callback = function(Value)
+local Players = game:GetService("Players")
+
+local function GetPlayerHealth(player)
+    local humanoid = player.Character:FindFirstChild("Humanoid")
+    if humanoid then
+        return humanoid.Health
+    end
+    return -1 -- Возвращает -1, если игрок не найден или у него нет гуманоида.
+end
+
+local playerName = Value
+
+local players = Players:GetPlayers()
+local player = nil
+for i, p in pairs(players) do
+    if string.find(p.Name, playerName) then
+        player = p
+        break
+    end
+end
+
+if player then
+    local health = GetPlayerHealth(player)
+    print("Health: " .. health)
+else
+    print("nil")
+end
+
+-- Получает скорость указанного игрока.
+
+local Players = game:GetService("Players")
+
+local function GetPlayerSpeed(player)
+    local humanoid = player.Character:FindFirstChild("Humanoid")
+    if humanoid then
+        return humanoid.WalkSpeed
+    end
+    return -1 -- Возвращает -1, если игрок не найден или у него нет гуманоида.
+end
+
+local playerName = Value
+
+local players = Players:GetPlayers()
+local player = nil
+for i, p in pairs(players) do
+    if string.find(p.Name, playerName) then
+        player = p
+        break
+    end
+end
+
+if player then
+    local speed = GetPlayerSpeed(player)
+    print("Walkspeed: " .. speed)
+else
+    print("nil")
+end
+
+-- Получает силу прыжка указанного игрока.
+
+local Players = game:GetService("Players")
+
+local function GetPlayerJumpPower(player)
+    local humanoid = player.Character:FindFirstChild("Humanoid")
+    if humanoid then
+        return humanoid.JumpPower
+    end
+    return -1 -- Возвращает -1, если игрок не найден или у него нет гуманоида.
+end
+
+local playerName = Value
+
+local players = Players:GetPlayers()
+local player = nil
+for i, p in pairs(players) do
+    if string.find(p.Name, playerName) then
+        player = p
+        break
+    end
+end
+
+if player then
+    local jumpPower = GetPlayerJumpPower(player)
+    print("Jumppower: " .. jumpPower)
+else
+    print("nil")
+end
+
+local nameToFind = Value
+
+-- Преобразуем критерий поиска в нижний регистр
+nameToFind = string.lower(nameToFind)
+
+-- Находим игрока по части имени
+local function findPlayerByName(name)
+    for _, player in pairs(game.Players:GetPlayers()) do
+        local playerName = string.lower(player.Name)
+        if string.find(playerName, name) then
+            return player
+        end
+    end
+    return nil
+end
+
+local player = findPlayerByName(nameToFind)
+if player then
+    local character = player.Character
+    if character then
+        local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            local playerCFrame = humanoidRootPart.CFrame
+
+            local x = playerCFrame.X
+            local y = playerCFrame.Y
+            local z = playerCFrame.Z
+
+            print("CFrame: " .. x .. ", Y: " .. y .. ", Z: " .. z)
+        else
+            print("nil")
+        end
+    else
+        print("nil")
+    end
+else
+    print("nil")
+end
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Target player: " .. player.Name .. "",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+    end      
+})
+
 local Section = Tab:AddSection({
 	Name = "Secret"
 })
