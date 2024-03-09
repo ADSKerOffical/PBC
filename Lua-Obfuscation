@@ -1037,7 +1037,7 @@ end
 Tab:AddDropdown({
 	Name = "Animations R6",
 	Default = "",
-	Options = {"Quick Bang", "Quick Dance", "Freeze Anims", "Holding", "Holding v2", "Holding v3", "I'll get a buzz right now", "Blow", "Dab", "Im watching you", "Holding v4", "Holding v5", "Epic dance", "Crazy dance", "Throw away", "Sit animation", "Kick", "IDK", "Rack", "T pose", "Hold a gun", "Letting go", "Table overturning"},
+	Options = {"Quick Bang", "Quick Dance", "Freeze Anims", "Holding", "Holding v2", "Holding v3", "I'll get a buzz right now", "Blow", "Dab", "Im watching you", "Holding v4", "Holding v5", "Epic dance", "Crazy dance", "Throw away", "Sit animation", "Kick", "IDK", "Rack", "T pose", "Hold a gun", "Letting go", "Table overturning", "IDK 2", "Shocked", "Holding", "Holding", "Masochism", "IDK 3", "Punch", "Holding", "Spell"},
 	Callback = function(Value)
 	if Value == "Quick Bang" then
 	local Anim = Instance.new("Animation")
@@ -1196,6 +1196,69 @@ end
 if Value == "Table overturning" then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://111898867"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "IDK 2"
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://113246235"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Shocked" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://119783214"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Holding" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://233077885"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Holding" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://71526265"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Masochism" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://91346946"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "IDK 3" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://73033645"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Punch" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://94790076"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Holding" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://94242777"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+end
+if Value == "Spell" then
+local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://70990857"
 local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
 k:Play()
 k:AdjustSpeed(1)
