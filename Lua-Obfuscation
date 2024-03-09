@@ -1200,7 +1200,7 @@ local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimatio
 k:Play()
 k:AdjustSpeed(1)
 end
-if Value == "IDK 2"
+if Value == "IDK 2" then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://113246235"
 local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
