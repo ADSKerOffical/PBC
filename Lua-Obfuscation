@@ -573,7 +573,7 @@ end
 Tab:AddDropdown({
 	Name = "Antis",
 	Default = "",
-	Options = {"Anti Water", "Anti Void", "Anti Trash Cola"},
+	Options = {"Anti Water", "Anti Void", "Anti Trash Cola", "Anti sit"},
 	Callback = function(Value)
 		if Value == "Anti Water" then
 		local player = game:GetService("Players").LocalPlayer
@@ -620,6 +620,23 @@ end)
 
 setupInventory()
 		end
+if Value == "Anti sit" then
+local player = game.Players.LocalPlayer
+local function onStateChanged()
+    if player.Character.Humanoid.Sit then
+        player.Character.Humanoid.Sit = fasle
+    end
+end
+
+player.Character.Humanoid:GetPropertyChangedSignal("Sit"):Connect(onStateChanged)
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "To disable this script, do a reset or die",
+	Image = "rbxassetid://16336200609",
+	Time = 7
+})
+   end    
 	end    
 })
 
@@ -1309,12 +1326,11 @@ game. Players.LocalPlayer.Character.HumanoidRootPart.CFrame = last_pick_sin_mraz
 if Value == "Pusher" then
  local plr = game.Players.LocalPlayer
 local char = plr.Character
-SwEF = 1e9999 * 1e9999 * 1e99
   
   for _, child in pairs(char:GetChildren()) do
     if child:IsA("BasePart") then
       child.Massless = false
-      child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF) 
+      child.CustomPhysicalProperties = PhysicalProperties.new(math.huge, math.huge, math.huge) 
     end
   end
         local tool = Instance.new("Tool") -- Создаем инструмент для игрока
@@ -2365,10 +2381,8 @@ chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Positio
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/SimpleSpyV3/main.lua"))()
 		end
 		if Value == "Http spy" then
-                gggg = 'loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Httpspy/main/httpspy.txt"))()'
 loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Httpspy/main/httpspy.txt"))()
-setclipboard(gggg)
-error("I won't let you do this")
+error("This will be between us, okay?")
 		end
 	end    
 })
@@ -3385,27 +3399,6 @@ Tab:AddButton({
 })
 
 Tab:AddButton({
- Name = "Anti sit",
- Callback = function()
-local player = game.Players.LocalPlayer
-local function onStateChanged()
-    if player.Character.Humanoid.Sit then
-        player.Character.Humanoid.Sit = fasle
-    end
-end
-
-player.Character.Humanoid:GetPropertyChangedSignal("Sit"):Connect(onStateChanged)
-
-OrionLib:MakeNotification({
-	Name = "Budgie Hub",
-	Content = "To disable this script, do a reset or die",
-	Image = "rbxassetid://16336200609",
-	Time = 7
-})
-   end    
-})
-
-Tab:AddButton({
  Name = "2017 style",
  Callback = function()
 loadstring(game:HttpGet("https://pastebin.com/raw/eqBUVS8F"))()
@@ -4147,7 +4140,3 @@ aText = [[
 -- this script was subjected to 100 Commits
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
-
-  while task.wait() do
-loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/AntiHttpSpy/main/ABCDEFJRTYUIOPLKSZXCVNMQWLAHLGTFBMLLOYFRUFSCBMJTEWCBHTD"))()
-   end
