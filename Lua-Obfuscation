@@ -1,3 +1,4 @@
+-- [[ I hope you're not the kind of person who steals everything and just leaves the script like a trash heap ]]
 local player = game.Players.LocalPlayer
 local targetUserId = "4636825706", "5080213871", "5174043047", "4636830533", "5122935774"
 
@@ -3860,8 +3861,106 @@ game:GetService("RunService").Heartbeat:Wait()
    end    
 })
 
+Tab:AddButton({
+ Name = "Functions display",
+ Callback = function()
+        -- Получаем все объекты Workspace
+local objects = game.Workspace:GetDescendants()
+
+-- Функция для проверки, является ли объект скриптом
+local function isScript(obj)
+    return obj:IsA("LuaSourceContainer") or obj:IsA("ModuleScript")
+end
+
+-- Проходимся по всем объектам и выводим скрипты
+for _, obj in ipairs(objects) do
+    if isScript(obj) then
+        print(obj:GetFullName())
+    end
+end
+   end    
+})
+
 local Section = Tab:AddSection({
 	Name = "Secret"
+})
+
+Tab:AddButton({
+ Name = "Punch Tool",
+ Callback = function()
+        local tool = Instance.new("Tool")
+tool.Name = "Punch Tool"
+tool.RequiresHandle = false
+tool.TextureId = "http://www.roblox.com/asset/?id=16683940253"
+
+-- Функция, которую вы хотите запустить при активации инструмента
+local function ActivateTool()
+    local Anim = Instance.new("Animation")
+Anim.AnimationId = "rbxassetid://94790076"
+local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+k:Play()
+k:AdjustSpeed(1)
+
+if game:GetService("ReplicatedStorage"):FindFirstChild("juisdfj0i32i0eidsuf0iok") then
+		 hiddenfling = true
+	 else
+		 hiddenfling = true
+		 detection = Instance.new("Decal")
+		 detection.Name = "juisdfj0i32i0eidsuf0iok"
+		 detection.Parent = game:GetService("ReplicatedStorage")
+		 local function fling()
+			 local hrp, c, vel, movel = nil, nil, nil, 0.1
+			 while true do
+				 game:GetService("RunService").Heartbeat:Wait()
+				 if hiddenfling then
+					 local lp = game.Players.LocalPlayer
+					 while hiddenfling and not (c and c.Parent and hrp and hrp.Parent) do
+						 game:GetService("RunService").Heartbeat:Wait()
+						 c = lp.Character
+						 hrp = c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("Torso") or c:FindFirstChild("UpperTorso")
+					 end
+					 if hiddenfling then
+						 vel = hrp.Velocity
+						 hrp.Velocity = vel * 100000 + Vector3.new(0, 100000, 0)
+						game:GetService("RunService").RenderStepped:Wait()
+						 if c and c.Parent and hrp and hrp.Parent then
+							 hrp.Velocity = vel
+						 end
+						 game:GetService("RunService").Stepped:Wait()
+						 if c and c.Parent and hrp and hrp.Parent then
+							 hrp.Velocity = vel + Vector3.new(0, movel, 0)
+							 movel = movel * -1
+						 end
+					 end
+				 end
+			 end
+		 end
+		 
+		 fling()
+	 end
+	wait(2)
+	hiddenfling = fasle
+end
+
+-- Обработчик события активации инструмента
+tool.Activated:Connect(ActivateTool)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+   end    
+})
+
+Tab:AddDropdown({
+	Name = "Scripts from delta",
+	Default = "1",
+	Options = {"Delta keyboard", "Delta Infinite yield"},
+	Callback = function(Value)
+		if Value == "Delta keyboard" then
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/Delta-Scripts/main/MobileKeyboard.txt"))()
+		end
+		if Value == "Delta infinite yield" then
+		loadstring("https://gist.githubusercontent.com/lxnnydev/c533c374ca4c1dcef4e1e10e33fa4a0c/raw/03e74f184f801dad77d3ebe1e2f18c6ac87ca612/delta___IY.gistfile1.txt.lua"))()
+		end
+	end    
 })
 
 Tab:AddTextbox({
