@@ -3880,20 +3880,6 @@ end
    end    
 })
 
-Tab:AddDropdown({
-	Name = "Scripts from delta",
-	Default = "1",
-	Options = {"Delta keyboard", "Delta Infinite yield"},
-	Callback = function(Value)
-		if Value == "Delta keyboard" then
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/Delta-Scripts/main/MobileKeyboard.txt"))()
-		end
-		if Value == "Delta infinite yield" then
-		loadstring("https://gist.githubusercontent.com/lxnnydev/c533c374ca4c1dcef4e1e10e33fa4a0c/raw/03e74f184f801dad77d3ebe1e2f18c6ac87ca612/delta___IY.gistfile1.txt.lua"))()
-		end
-	end    
-})
-
 local Section = Tab:AddSection({
 	Name = "Secret"
 })
