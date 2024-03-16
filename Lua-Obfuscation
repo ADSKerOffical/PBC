@@ -2767,7 +2767,6 @@ game:GetService("RunService").RenderStepped:Connect(function()
         end
     end
 end)
-end
 
 Spooky = Instance.new("Sound", game.Workspace)
 Spooky.Name = "Spooky"
@@ -2783,6 +2782,7 @@ OrionLib:MakeNotification({
  Image = "rbxassetid://16336200609",
  Time = 10
 })
+end
 	end    
 })
 
