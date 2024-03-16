@@ -2577,7 +2577,7 @@ plr.CameraMinZoomDistance = 0
 Tab:AddDropdown({
 	Name = "Kill all versions",
 	Default = "",
-	Options = {"Kill all", "Multi kill all", "Anti kill friends", "Multi anti kill friends"},
+	Options = {"Kill all", "Multi kill all", "Anti kill friends", "Multi anti kill friends", "Kill all NPCs"},
 	Callback = function(Value)
 		if Value == "Kill all" then
 		local range = 1000
@@ -2747,6 +2747,42 @@ OrionLib:MakeNotification({
  Time = 10
 })
 		end
+if Value == "Kill all NPCs" then
+local range = 1000
+local player = game:GetService("Players").LocalPlayer
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    for _, obj in pairs(game:GetService("Workspace"):GetDescendants()) do
+        if obj:IsA("Model") and obj:FindFirstChildOfClass("Humanoid") then
+            local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
+            if tool and tool:FindFirstChild("Handle") then
+                tool:Activate()
+                for i, v in pairs(obj:GetChildren()) do
+                    if v:IsA("BasePart") then
+                        firetouchinterest(tool.Handle, v, 0)
+                        firetouchinterest(tool.Handle, v, 1)
+                    end
+                end
+            end
+        end
+    end
+end)
+end
+
+Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+ Name = "Budgie Hub",
+ Content = "Kills all models with a sword",
+ Image = "rbxassetid://16336200609",
+ Time = 10
+})
 	end    
 })
 
