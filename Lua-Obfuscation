@@ -2200,60 +2200,63 @@ Tab:AddButton({
  Name = "Anti fling",
  Callback = function()
 local Services = setmetatable({}, {__index = function(Self, Index)
-local NewService = game.GetService(game, Index)
-if NewService then
-Self[Index] = NewService
-end
-return NewService
+    local NewService = game:GetService(Index)
+    if NewService then
+        Self[Index] = NewService
+    end
+    return NewService
 end})
 
 local LocalPlayer = Services.Players.LocalPlayer
 
 local function PlayerAdded(Player)
-   local Detected = false
-   local Character;
-   local PrimaryPart;
-   local function CharacterAdded(NewCharacter)
-       Character = NewCharacter
-       repeat
-           wait()
-           PrimaryPart = NewCharacter:FindFirstChild("HumanoidRootPart")
-       until PrimaryPart
-       Detected = false
-   end
+    local Character
+    local PrimaryPart
 
-   CharacterAdded(Player.Character or Player.CharacterAdded:Wait())
-   Player.CharacterAdded:Connect(CharacterAdded)
-   Services.RunService.Heartbeat:Connect(function()
-       if (Character and Character:IsDescendantOf(workspace)) and (PrimaryPart and PrimaryPart:IsDescendantOf(Character)) then
-           if PrimaryPart.AssemblyAngularVelocity.Magnitude > 1 or PrimaryPart.AssemblyLinearVelocity.Magnitude > 1 then
-               if Detected == false then
-             
-               end
-               Detected = true
-               for i,v in ipairs(Character:GetDescendants()) do
-                   if v:IsA("BasePart") then
-                       v.CanCollide = false
-                       v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-                       v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-                       v.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
-                   end
-               end
-               PrimaryPart.CanCollide = false
-               PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
-               PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
-               PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
-           end
-       end
-   end)
+    local function CharacterAdded(newCharacter)
+        Character = newCharacter
+        repeat
+            wait()
+            PrimaryPart = newCharacter:FindFirstChild("HumanoidRootPart")
+        until PrimaryPart
+    end
+
+    Player.CharacterAdded:Connect(CharacterAdded)
+    if Player.Character then
+        CharacterAdded(Player.Character)
+    end
+
+    Services.RunService.Heartbeat:Connect(function()
+        if Character and Character:IsDescendantOf(workspace) and PrimaryPart and PrimaryPart:IsDescendantOf(Character) then
+            if PrimaryPart.AssemblyAngularVelocity.Magnitude > 0 or PrimaryPart.AssemblyLinearVelocity.Magnitude > 0 then
+                for _, v in ipairs(Character:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                        v.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+                        v.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+                        v.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+                    end
+                end
+                PrimaryPart.CanCollide = false
+                PrimaryPart.AssemblyAngularVelocity = Vector3.new(0, 0, 0)
+                PrimaryPart.AssemblyLinearVelocity = Vector3.new(0, 0, 0)
+                PrimaryPart.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0)
+            end
+        end
+    end)
 end
 
-for i,v in ipairs(Services.Players:GetPlayers()) do
-   if v ~= LocalPlayer then
-       PlayerAdded(v)
-   end
+local function OnPlayerAdded(player)
+    if player ~= LocalPlayer then
+        PlayerAdded(player)
+    end
 end
-Services.Players.PlayerAdded:Connect(PlayerAdded)
+
+for _, player in ipairs(Services.Players:GetPlayers()) do
+    OnPlayerAdded(player)
+end
+
+Services.Players.PlayerAdded:Connect(OnPlayerAdded)
    end    
 })
 
