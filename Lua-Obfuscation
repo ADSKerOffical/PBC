@@ -2389,6 +2389,13 @@ Tab:AddButton({
    end    
 })
 
+Tab:AddButton({
+ Name = "Anti cheat bypass",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/AntiCheat/main/Bypass"))()
+   end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
