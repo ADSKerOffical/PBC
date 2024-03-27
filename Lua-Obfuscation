@@ -1283,6 +1283,17 @@ end
 	end    
 })
 
+Tab:AddButton({
+ Name = "Reset animations",
+ Callback = function()
+        local Humanoid = game.Players.LocalPlayer.Character.Humanoid
+local ActiveTracks = Humanoid:GetPlayingAnimationTracks()
+for _,v in pairs(ActiveTracks) do
+     v:Stop()
+end
+   end    
+})
+
 Tab:AddDropdown({
 	Name = "Parts control",
 	Default = "",
