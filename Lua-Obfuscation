@@ -2455,6 +2455,40 @@ end
 	end    
 })
 
+Tab:AddButton({
+ Name = "Fling NPCs",
+ Callback = function()
+        local npcs = {}
+ 
+  local function disappear(hum)
+    if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+   table.insert(npcs,{hum,hum.HipHeight})
+     hum.HipHeight = 1024
+   end
+  end
+  for _,hum in pairs(workspace:GetDescendants()) do
+    disappear(hum)
+  end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Void NPCs",
+ Callback = function()
+        local npcs = {}
+ 
+  local function disappear(hum)
+    if hum:IsA("Humanoid") and not game.Players:GetPlayerFromCharacter(hum.Parent) then
+   table.insert(npcs,{hum,hum.HipHeight})
+     hum.HipHeight = -1024
+   end
+  end
+  for _,hum in pairs(workspace:GetDescendants()) do
+    disappear(hum)
+  end
+   end    
+})
+
 Tab:AddDropdown({
 	Name = "Enable",
 	Default = "E",
@@ -2566,19 +2600,6 @@ Tab:AddButton({
 end)
 
   	end    
-})
-
-Tab:AddButton({
- Name = "Destroy everything",
- Callback = function()
-        local NPCs = game:GetService("Workspace"):GetChildren()
-
-for i,v in pairs(NPCs) do
-  if v:IsA("Model") and v.Name ~= game.Players.LocalPlayer.Name then
-    v:Destroy()
-  end
-end
-   end    
 })
 
 Tab:AddButton({
@@ -2801,6 +2822,40 @@ OrionLib:MakeNotification({
 })
 end
 	end    
+})
+
+Tab:AddTextbox({
+	Name = "Kill player",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		local range = 1000
+local playerName = Value
+
+local player = game:GetService("Players").LocalPlayer
+game:GetService("RunService").RenderStepped:Connect(function()
+    local p = game.Players:GetPlayers()
+    for i = 1, #p do
+        local v = p[i]
+        if string.find(v.Name:lower(), playerName:lower()) or (v.DisplayName and string.find(v.DisplayName:lower(), playerName:lower())) then
+            local character = v.Character
+            if character and player.Character then
+                for _, tool in pairs(player.Character:GetChildren()) do
+                    if tool:IsA("Tool") and tool:FindFirstChild("Handle") then
+                        tool:Activate()
+                        for _, part in pairs(character:GetChildren()) do
+                            if part:IsA("BasePart") then
+                                firetouchinterest(tool.Handle, part, 0)
+                                firetouchinterest(tool.Handle, part, 1)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+	end	  
 })
 
 Tab:AddDropdown({
@@ -3152,16 +3207,12 @@ Tab:AddDropdown({
 	Options = {"R6", "R15"},
 	Callback = function(Value)
 		if Value == "R6" then
-		local player = game.Players.LocalPlayer
-local character = player.Character 
-
-character.Humanoid.RigType = Enum.HumanoidRigType.R6
+		local avs = game:GetService("AvatarEditorService")
+ avs:PromptSaveAvatar(game.Players.LocalPlayer.Character.Humanoid.HumanoidDescription,Enum.HumanoidRigType.R6)
 		end
 		if Value == "R15" then
-		local player = game.Players.LocalPlayer
-local character = player.Character 
-
-character.Humanoid.RigType = Enum.HumanoidRigType.R15
+		local avs = game:GetService("AvatarEditorService")
+ avs:PromptSaveAvatar(game.Players.LocalPlayer.Character.Humanoid.HumanoidDescription,Enum.HumanoidRigType.R15)
 		end
 	end    
 })
@@ -3358,7 +3409,7 @@ local targetPlayer = findPlayer(targetName)
 if targetPlayer then
     teleportToPlayer(targetPlayer)
 else
-    print("Игрок не найден")
+    print("Player not found")
 end
   end
 })
