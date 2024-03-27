@@ -2382,6 +2382,13 @@ error("This will be between us, okay?")
 	end    
 })
 
+Tab:AddButton({
+ Name = "Chat bypass",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Clickgameplay/no-tag-script/main/.NoTagScript"))()
+   end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
