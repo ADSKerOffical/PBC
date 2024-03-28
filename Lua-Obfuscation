@@ -3987,6 +3987,53 @@ end
    end    
 })
 
+Tab:AddToggle({
+ Name = "Lag server",
+ Default = false,
+ Callback = function(Value)
+        ggg = Value
+while ggg do
+task.wait()
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+for _, tool in pairs(player.Backpack:GetChildren()) do
+    if tool:IsA("Tool") then
+        tool.Parent = character
+    end
+end
+
+task.wait()
+
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+for _, tool in pairs(character:GetChildren()) do
+    if tool:IsA("Tool") then
+        tool.Parent = player.Backpack
+    end
+end
+end
+   end    
+})
+
+Tab:AddButton({
+ Name = "Break Vehicles",
+ Callback = function()
+        local carSpeedMultiplier = 2
+for _, object in ipairs(game.Workspace:GetDescendants()) do
+    if object:IsA("Model") then
+        local vehicle = object:FindFirstChildOfClass("VehicleSeat")
+        if vehicle then
+            local bodyVelocity = Instance.new("BodyVelocity")
+            bodyVelocity.Velocity = vehicle.CFrame.LookVector * carSpeedMultiplier
+            bodyVelocity.MaxForce = Vector3.new(400000, 400000, 400000) -- Максимальная сила
+            bodyVelocity.P = 1000
+            bodyVelocity.Parent = vehicle
+        end
+    end
+end
+   end    
+})
+
 local Section = Tab:AddSection({
 	Name = "Secret"
 })
