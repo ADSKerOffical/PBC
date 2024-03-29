@@ -1,5 +1,5 @@
 local player = game.Players.LocalPlayer
-local targetUserId = "4636825706", "5080213871", "5174043047", "4636830533", "5122935774"
+local targetUserId = "4636830533"
 
 local targetPlayer = game.Players:GetPlayerByUserId(targetUserId)
 if targetPlayer then
@@ -2404,6 +2404,13 @@ Tab:AddButton({
  Name = "Anti cheat bypass",
  Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/AntiCheat/main/Bypass"))()
+   end    
+})
+
+Tab:AddButton({
+ Name = "Grip tools GUI(Mod)",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/GripToolsGUI/main/Mod"))()
    end    
 })
 
