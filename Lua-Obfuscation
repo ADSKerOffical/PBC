@@ -1294,6 +1294,19 @@ end
    end    
 })
 
+Tab:AddTextbox({
+	Name = "Animation speed",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		local Humanoid = game.Players.LocalPlayer.Character.Humanoid
+local ActiveTracks = Humanoid:GetPlayingAnimationTracks()
+for _,v in pairs(ActiveTracks) do
+     v:AdjustSpeed(Value)
+end
+	end	  
+})
+
 Tab:AddDropdown({
 	Name = "Parts control",
 	Default = "",
