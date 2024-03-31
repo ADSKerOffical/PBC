@@ -3,7 +3,6 @@ local targetUserId = "4636830533"
 
 local targetPlayer = game.Players:GetPlayerByUserId(targetUserId)
 if targetPlayer then
-    -- Отправляем сообщение игроку
     local message = "On the server you are on there is one of the creator Budgie Hub"
     game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", {
         Text = message,
@@ -2425,6 +2424,26 @@ Tab:AddButton({
  Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/GripToolsGUI/main/Mod"))()
    end    
+})
+
+Tab:AddTextbox({
+	Name = "Ring-shaped GripTools",
+	Default = "Radius",
+	TextDisappear = true,
+	Callback = function(Value)
+local player = game.Players.LocalPlayer
+local circleCenter = player.Character.HumanoidRootPart.Position
+local radius = Value
+local numTools = player.Backpack:GetChildren()
+local angleIncrement = 360 / #numTools
+
+for i, tool in ipairs(numTools) do
+    local angle = math.rad(i * angleIncrement)
+    local offsetX = math.cos(angle) * radius
+    local offsetZ = math.sin(angle) * radius
+    tool.GripPos = Vector3.new(offsetX, 0, offsetZ)
+end
+	end	  
 })
 
 local Tab = Window:MakeTab({
