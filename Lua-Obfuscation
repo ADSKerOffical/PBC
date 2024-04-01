@@ -2446,6 +2446,107 @@ end
 	end	  
 })
 
+Tab:AddTextbox({
+	Name = "Domen",
+	Default = "Reduce to",
+	TextDisappear = true,
+	Callback = function(Value)
+		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local backpack = player:WaitForChild("Backpack")
+local tools = backpack:GetChildren()
+local size = 0
+
+local function getRandomVectorInSphere(radius)
+    local theta = math.random() * 2 * math.pi
+    local phi = math.acos(2 * math.random() - 1)
+    local x = radius * math.sin(phi) * math.cos(theta) / Value
+    local y = radius * math.sin(phi) * math.sin(theta) / Value
+    local z = radius * math.cos(phi) / Value
+    return Vector3.new(x, y, z)
+end
+
+local function distributeToolsInDiamond()
+    for _, tool in ipairs(tools) do
+        local randomOffset = getRandomVectorInSphere(10)
+        local centerX = humanoidRootPart.Position.X + randomOffset.X
+        local centerY = humanoidRootPart.Position.Y + randomOffset.Y
+        local centerZ = humanoidRootPart.Position.Z + randomOffset.Z
+
+        local positionIndex = 1
+        local offset = Vector3.new()
+
+        if positionIndex == 1 then
+            offset = Vector3.new(centerX, centerY + size, centerZ) -- верхняя точка ромба
+        elseif positionIndex == 2 then
+            offset = Vector3.new(centerX + size, centerY, centerZ) -- правая точка ромба
+        elseif positionIndex == 3 then
+            offset = Vector3.new(centerX, centerY - size, centerZ) -- нижняя точка ромба
+        elseif positionIndex == 0 then
+            offset = Vector3.new(centerX - size, centerY, centerZ) -- левая точка ромба
+        end
+
+        tool.GripPos = humanoidRootPart.CFrame:PointToObjectSpace(offset)
+    end
+end
+
+distributeToolsInDiamond()
+	end	  
+})
+
+Tab:AddTextbox({
+	Name = "Reclining sphere (TrashCola)",
+	Default = "Size",
+	TextDisappear = true,
+	Callback = function(Value)
+		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+local backpack = player:WaitForChild("Backpack")
+local tools = backpack:GetChildren()
+local size = 10
+
+-- Функция для получения случайного вектора внутри сферы
+local function getRandomVectorInSphere(radius)
+    local theta = math.random() * 2 * math.pi
+    local phi = math.acos(2 * math.random() - 1)
+    local x = radius * math.sin(phi) * math.cos(theta) * Value
+    local y = radius * math.sin(phi) * math.sin(theta) * Value
+    local z = radius * math.cos(phi) * Value
+    return Vector3.new(x, y, z)
+end
+
+-- Функция для распределения инструментов в форме ромба со случайным центром
+local function distributeToolsInDiamond()
+    for _, tool in ipairs(tools) do
+        local randomOffset = getRandomVectorInSphere(10) -- получаем случайный вектор смещения
+        local centerX = humanoidRootPart.Position.X + randomOffset.X
+        local centerY = humanoidRootPart.Position.Y + randomOffset.Y
+        local centerZ = humanoidRootPart.Position.Z + randomOffset.Z
+
+        local positionIndex = 2
+        local offset = Vector3.new()
+
+        if positionIndex == 1 then
+            offset = Vector3.new(centerX, centerY + size, centerZ) -- верхняя точка ромба
+        elseif positionIndex == 2 then
+            offset = Vector3.new(centerX - size, centerY, centerZ) -- правая точка ромба
+        elseif positionIndex == 3 then
+            offset = Vector3.new(centerX, centerY - size, centerZ) -- нижняя точка ромба
+        elseif positionIndex == 0 then
+            offset = Vector3.new(centerX - size, centerY, centerZ) -- левая точка ромба
+        end
+
+        tool.GripPos = humanoidRootPart.CFrame:PointToObjectSpace(offset)
+    end
+end
+
+-- Вызов функции для распределения инструментов
+distributeToolsInDiamond()
+	end	  
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
