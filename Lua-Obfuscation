@@ -2667,6 +2667,34 @@ end
 	end    
 })
 
+Tab:AddDropdown({
+	Name = "Disable",
+	Default = "E",
+	Options = {"Disable reset", "Disable inventory", "Disable emotes", "Disable leaderboard", "Disable chat"},
+	Callback = function(Value)
+		if Value == "Enable reset" then
+		local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCore("ResetButtonCallback",false)
+end
+       if Value == "Disable inventory" then
+local StarterGui = game:GetService("StarterGui")
+StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false)
+end
+      if Value == "Disable emotes" then
+      local StarterGui = game:GetService("StarterGui")
+      game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, false)
+      end
+      if Value == "Disable leaderboard" then
+      sgui = game:GetService("StarterGui")
+sgui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
+      end
+      if Value == "Disable chat" then
+      local sgui = game:GetService("StarterGui")
+sgui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
+      end
+	end    
+})
+
 Tab:AddButton({
 	Name = "Cbring",
 	Callback = function()
