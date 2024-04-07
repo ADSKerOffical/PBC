@@ -4202,6 +4202,27 @@ end
    end    
 })
 
+local ARagdoll = false
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if ARagdoll then
+        local humanoid = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+
+        if humanoid and (humanoid:GetState() == Enum.HumanoidStateType.Ragdoll or humanoid:GetState() == Enum.HumanoidStateType.Physics) then
+            humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
+            humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        end
+    end
+end)
+
+Tab:AddToggle({
+    Name = "Anti Ragdoll",
+    Default = false,
+    Callback = function(Value)
+        ARagdoll = Value
+    end
+})
+
 local Section = Tab:AddSection({
 	Name = "Secret"
 })
