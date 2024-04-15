@@ -4517,6 +4517,7 @@ Ambient2.Volume = 1
 Ambient2.PlaybackSpeed = 1
 Ambient2.Looped = true
 Ambient2:Play()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/NextBot/main/NextBot"))()
    activated = true
         end
     end
@@ -4654,6 +4655,27 @@ Tab:AddButton({
  Name = "Lua obfuscator",
  Callback = function()
         setclipboard("https://luaobfuscator.epizy.com")
+   end    
+})
+
+Tab:AddButton({
+ Name = "Download ApkTool M",
+ Callback = function()
+        setclipboard("https://trashbox.ru/link/apktool-m-android")
+        Spooky = Instance.new("Sound", game.Workspace)
+Spooky.Name = "Spooky"
+Spooky.SoundId = "rbxassetid://3398620867"
+Spooky.Volume = 1
+Spooky.PlaybackSpeed = 2
+Spooky.Looped = fasle
+Spooky:Play()
+
+OrionLib:MakeNotification({
+	Name = "Budgie Hub",
+	Content = "Using this application you can create mini hacks for games",
+	Image = "rbxassetid://16505492881",
+	Time = 5
+})
    end    
 })
 
