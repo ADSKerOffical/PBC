@@ -2547,6 +2547,23 @@ distributeToolsInDiamond()
 	end	  
 })
 
+Tab:AddDropdown({
+	Name = "Documentation ADSKer",
+	Default = "",
+	Options = {"Cycles", "Cycles v2", "Return"},
+	Callback = function(Value)
+	    if Value == "Cycles" then
+	setclipboard("https://github.com/ADSKerOffical/Documentation-1/blob/main/Tutorial")
+	   end
+	   if Value == "Cycles v2" then
+	setclipboard("https://github.com/ADSKerOffical/Documentation-2/blob/main/Tutorial")
+	   end
+	   if Value == "Return" then
+	setclipboard("https://github.com/ADSKerOffical/Documentation-3/blob/main/Tutorial")
+	   end 
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
@@ -4676,6 +4693,31 @@ OrionLib:MakeNotification({
 	Image = "rbxassetid://16505492881",
 	Time = 5
 })
+   end    
+})
+
+local Section = Tab:AddSection({
+	Name = "For Creators Scripts"
+})
+
+Tab:AddButton({
+ Name = "Icons",
+ Callback = function()
+        setclipboard("https://raw.githubusercontent.com/evoincorp/lucideblox/master/src/modules/util/icons.json")
+   end    
+})
+
+Tab:AddButton({
+ Name = "Humanoid States",
+ Callback = function()
+        setclipboard("https://pastebin.com/JZUCD5cU")
+   end    
+})
+
+Tab:AddButton({
+ Name = "Properties library",
+ Callback = function()
+        setclipboard("https://github.com/ADSKerOffical/Table/blob/main/Properties")
    end    
 })
 
