@@ -4240,6 +4240,28 @@ Tab:AddToggle({
     end
 })
 
+Tab:AddToggle({
+ Name = "Ghost mode v2",
+ Default = false,
+ Callback = function(Value)
+        ABH = Value
+while ABH do
+     game:GetService("RunService").Heartbeat:Wait()
+     local lastPosition = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(math.random(-10, 10), math.random(0, 0), math.random(-10, 10))
+     game:GetService("RunService").Heartbeat:Wait()
+     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(lastPosition)
+end
+   end    
+})
+
+Tab:AddButton({
+	Name = "Null Message",
+	Callback = function() 
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("　", "All")
+	end    
+})
+
 local Section = Tab:AddSection({
 	Name = "Secret"
 })
