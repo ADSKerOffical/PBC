@@ -1188,11 +1188,13 @@ local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimatio
 k:Play()
 k:AdjustSpeed(1)
 end
-if Value == "T pose" then
+if Value == "T pose (fixed)" then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://27432691"
 local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
 k:Play()
+k:AdjustSpeed(4)
+wait(1)
 k:AdjustSpeed(0)
 end
 if Value == "Hold a gun" then
