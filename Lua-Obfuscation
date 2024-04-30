@@ -2582,6 +2582,13 @@ end)
    end    
 })
 
+Tab:AddButton({
+ Name = "Tool Angles Gui",
+ Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ADSKerOffical/Angles-GUI/main/Geometry"))()
+   end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
