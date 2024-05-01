@@ -1,6 +1,6 @@
 local player = game.Players.LocalPlayer
     if player.UserId == 1707682485 then
-        player:Kick("Сам соси")
+        player:Kick("Article 1 BH – insult to the administration")
     end
 
 local player = game.Players.LocalPlayer
