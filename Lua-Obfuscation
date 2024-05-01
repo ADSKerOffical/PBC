@@ -1,4 +1,9 @@
 local player = game.Players.LocalPlayer
+    if player.UserId == 1707682485 then
+        player:Kick("Сам соси")
+    end
+
+local player = game.Players.LocalPlayer
 local targetUserId = "4636830533"
 
 local targetPlayer = game.Players:GetPlayerByUserId(targetUserId)
