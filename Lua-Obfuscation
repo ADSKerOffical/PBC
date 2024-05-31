@@ -2594,6 +2594,26 @@ Tab:AddButton({
    end    
 })
 
+Tab:AddDropdown({
+	Name = "Get New Year's Tools",
+	Default = "1",
+	Options = {"Show Globe", "Jingle Bell", "Hot Chocolate", "Candy Cane"},
+	Callback = function(Value)
+		if Value == "Show Globe" then
+		game:GetService("ReplicatedStorage").ToolEvents.SnowGlobeEvent:FireServer()
+		end
+		if Value == "Jingle Bell" then
+		game:GetService("ReplicatedStorage").ToolEvents.JingleBellEvent:FireServer()
+		end
+		if Value == "Hot Chocolate" then
+		game:GetService("ReplicatedStorage").ToolEvents.HotChocolateEvent:FireServer()
+		end
+		if Value == "Candy Cane" then
+		game:GetService("ReplicatedStorage").ToolEvents.CandyCaneEvent:FireServer()
+		end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
