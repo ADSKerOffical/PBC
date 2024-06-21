@@ -4307,6 +4307,272 @@ game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageReque
 	end    
 })
 
+Tab:AddButton({
+ Name = "Helicopter",
+ Callback = function()
+        local function spin()
+local player = game.Players.LocalPlayer.Character
+local spinObj = nil
+
+if not player:FindFirstChild("Spinning") then
+    spinObj = Instance.new("BodyAngularVelocity")
+    spinObj.Name = "Spinning"
+    spinObj.Parent = player.HumanoidRootPart
+else
+    spinObj = player:FindFirstChild("Spinning")
+end
+
+local count = 1
+repeat
+    wait(0.1)
+    count = count + 1
+    spinObj.MaxTorque = Vector3.new(0, math.huge, 0)
+    spinObj.AngularVelocity = Vector3.new(0, count, 0)
+until player.Humanoid.Health == 0
+end
+
+local function fly()
+local counta = 0
+local player = game.Players.LocalPlayer.Character
+repeat wait()
+counta = counta + 0.1
+player.Humanoid.HipHeight = counta
+until player.Humanoid.Health == 0
+end
+
+coroutine.wrap(spin)()
+wait(5)
+coroutine.wrap(fly)()
+wait(5)
+local player = game.Players.LocalPlayer.Character
+player.Humanoid.Health = 0
+   end    
+})
+
+local Def = nil
+Tab:AddToggle({
+	Name = "Glitch",
+	Default = false,
+	Callback = function(Value)
+Def = Value
+		while Def do
+ wait(0.01)
+local TweenService = game:GetService("TweenService")
+local distance = 1
+local character = game.Players.LocalPlayer.Character
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        local newCFrame = humanoidRootPart.CFrame * CFrame.new(math.random(-distance, distance), 0, math.random(-distance, distance))
+        
+        local tweenInfo = TweenInfo.new(
+            0.01, -- Длительность анимации в секундах
+            Enum.EasingStyle.Linear, -- Стиль изменения (линейный делает движение равномерным)
+            Enum.EasingDirection.Out, -- Направление изменения
+            0, -- Количество повторений (0 означает без повторений)
+            true, -- Необходимость обратного движения
+            0 -- Задержка перед началом анимации
+        )
+        local tween = TweenService:Create(humanoidRootPart, tweenInfo, {CFrame = newCFrame})
+        
+        tween:Play()
+        tween.Completed:Wait()
+    end
+end
+	end    
+})
+
+Tab:AddButton({
+ Name = "Glitch(Tool)",
+ Callback = function()
+        local TweenService = game:GetService("TweenService")
+local tool = Instance.new("Tool")
+tool.Name = "Glitch"
+tool.RequiresHandle = false
+local distance = 1
+
+local isEnabled = false
+
+local function onActivated()
+    isEnabled = not isEnabled
+
+    if not isEnabled then return end
+while isEnabled and wait(0.01) do
+local TweenService = game:GetService("TweenService")
+local character = tool.Parent
+    local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        local newCFrame = humanoidRootPart.CFrame * CFrame.new(math.random(-distance, distance), 0, math.random(-distance, distance))
+        
+        local tweenInfo = TweenInfo.new(
+            0.01, -- Длительность анимации в секундах
+            Enum.EasingStyle.Linear, -- Стиль изменения (линейный делает движение равномерным)
+            Enum.EasingDirection.Out, -- Направление изменения
+            0, -- Количество повторений (0 означает без повторений)
+            true, -- Необходимость обратного движения
+            0 -- Задержка перед началом анимации
+        )
+        local tween = TweenService:Create(humanoidRootPart, tweenInfo, {CFrame = newCFrame})
+        
+        tween:Play()
+        tween.Completed:Wait()
+    end
+  end
+end
+
+tool.Activated:Connect(onActivated)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+   end    
+})
+
+Tab:AddButton({
+ Name = "Black hole tool",
+ Callback = function()
+        local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Black hole tool"
+tool.ToolTip = "Pulls all unattached objects to the local player"
+tool.TextureId = "http://www.roblox.com/asset/?id=16466291679"
+
+local isEnabled = false
+
+local function onActivated()
+    isEnabled = not isEnabled
+
+    if not isEnabled then
+        -- Выключение цикла притяжения
+        local affectedObjects = {}
+        for _, item in pairs(workspace:GetDescendants()) do
+            if item:IsA("Part") or item:IsA("MeshPart") then
+                if item.Anchored == false and not item:IsDescendantOf(game.Players.LocalPlayer.Character) then
+                    affectedObjects[item] = {
+                        CanTouch = item.CanTouch,
+                        CanCollide = item.CanCollide
+                    }
+                    item.CanTouch = false
+                    item.CanCollide = false
+                end
+            end
+        end
+
+        -- Восстановление свойств объектов через 2 секунды
+        task.wait(2)
+        for obj, props in pairs(affectedObjects) do
+            obj.CanTouch = props.CanTouch
+            obj.CanCollide = props.CanCollide
+        end
+
+        return
+    end
+
+    local plr = game.Players.LocalPlayer
+    local char = plr.Character
+    local SwEF = 1e9999 * 1e9999 * 1e9999
+
+    for _, child in pairs(char:GetChildren()) do
+        if child:IsA("BasePart") then
+            child.Massless = false
+            child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF)
+        end
+    end
+
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+    local clickPosition = mouse.Hit.p
+
+    while isEnabled and wait() do
+        for _, item in pairs(workspace:GetDescendants()) do
+            if item:IsA("Part") or item:IsA("MeshPart") then
+                if item.Anchored == false and not item:IsDescendantOf(player.Character) then
+                    item:ApplyImpulse((player.Character.HumanoidRootPart.Position - item.Position).unit * 1000)
+                    item.CanTouch = false
+                    item.CanCollide = false
+                end
+            end
+        end
+    end
+end
+
+tool.Activated:Connect(onActivated)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+   end    
+})
+
+Tab:AddButton({
+ Name = "Black hole tool v2",
+ Callback = function()
+        local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Black hole tool"
+tool.ToolTip = "Pulls all unattached objects in mouse hit position"
+tool.TextureId = "http://www.roblox.com/asset/?id=16466291679"
+
+local isEnabled = false
+
+local function onActivated()
+    isEnabled = not isEnabled
+
+    if not isEnabled then
+        -- Выключение цикла притяжения
+        local affectedObjects = {}
+        for _, item in pairs(workspace:GetDescendants()) do
+            if item:IsA("Part") or item:IsA("MeshPart") then
+                if item.Anchored == false and not item:IsDescendantOf(game.Players.LocalPlayer.Character) then
+                    affectedObjects[item] = {
+                        CanTouch = item.CanTouch,
+                        CanCollide = item.CanCollide
+                    }
+                    item.CanTouch = false
+                    item.CanCollide = false
+                end
+            end
+        end
+
+        -- Восстановление свойств объектов через 2 секунды
+        task.wait(2)
+        for obj, props in pairs(affectedObjects) do
+            obj.CanTouch = props.CanTouch
+            obj.CanCollide = props.CanCollide
+        end
+
+        return
+    end
+
+    local plr = game.Players.LocalPlayer
+    local char = plr.Character
+    local SwEF = 1e9999 * 1e9999 * 1e9999
+
+    for _, child in pairs(char:GetChildren()) do
+        if child:IsA("BasePart") then
+            child.Massless = false
+            child.CustomPhysicalProperties = PhysicalProperties.new(SwEF, SwEF, SwEF)
+        end
+    end
+
+    local player = game.Players.LocalPlayer
+    local mouse = player:GetMouse()
+    local clickPosition = mouse.Hit.p
+
+    while isEnabled and wait() do
+        for _, item in pairs(workspace:GetDescendants()) do
+            if item:IsA("Part") or item:IsA("MeshPart") then
+                if item.Anchored == false and not item:IsDescendantOf(player.Character) then
+                    item:ApplyImpulse((clickPosition - item.Position).unit * 450)
+                    item.CanTouch = false
+                    item.CanCollide = false
+                end
+            end
+        end
+    end
+end
+
+tool.Activated:Connect(onActivated)
+
+tool.Parent = game.Players.LocalPlayer.Backpack
+   end    
+})
+
 local Section = Tab:AddSection({
 	Name = "Secret"
 })
