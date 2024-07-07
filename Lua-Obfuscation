@@ -1011,6 +1011,71 @@ end
 	end
 })
 
+Tab:AddDropdown({
+	Name = "Anti collision handle tools",
+	Default = "1",
+	Options = {"With CanTouch", "Without CanTouch"},
+	Callback = function(Value)
+		if Value == "With CanTouch" then
+		local player = game.Players.LocalPlayer
+
+function findTools()
+    local tools = {}
+    for _, item in pairs(player.Backpack:GetChildren()) do
+        if item:IsA("Tool") then
+            table.insert(tools, item)
+        end
+    end
+    return tools
+end
+
+function disableToolInteraction(tools)
+    for _, tool in pairs(tools) do
+        local parts = tool:GetDescendants()
+        for _, part in pairs(parts) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
+                part.CanTouch = true
+                part.Anchored = false
+            end
+        end
+    end
+end
+
+        local tools = findTools()
+        disableToolInteraction(tools)
+		else
+		local player = game.Players.LocalPlayer
+
+function findTools()
+    local tools = {}
+    for _, item in pairs(player.Backpack:GetChildren()) do
+        if item:IsA("Tool") then
+            table.insert(tools, item)
+        end
+    end
+    return tools
+end
+
+function disableToolInteraction(tools)
+    for _, tool in pairs(tools) do
+        local parts = tool:GetDescendants()
+        for _, part in pairs(parts) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
+                part.CanTouch = false
+                part.Anchored = false
+            end
+        end
+    end
+end
+
+        local tools = findTools()
+        disableToolInteraction(tools)
+		end
+	end    
+})
+
 Tab:AddToggle({
  Name = "Quickly sorting objects",
  Default = false,
@@ -1188,7 +1253,7 @@ local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimatio
 k:Play()
 k:AdjustSpeed(1)
 end
-if Value == "T pose (fixed)" then
+if Value == "T pose" then
 local Anim = Instance.new("Animation")
 Anim.AnimationId = "rbxassetid://27432691"
 local k = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
