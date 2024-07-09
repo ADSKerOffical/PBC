@@ -1011,6 +1011,40 @@ end
 	end
 })
 
+Tab:AddTextbox({
+	Name = "Get Paper Napkin",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		for i = 1, Value do
+		fireclickdetector(game:GetService("Workspace")["Paper napkin dispenser"].Dispenser.ClickDetector)
+		end
+	end	  
+})
+
+Tab:AddTextbox({
+	Name = "Get Toilet Paper",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		for i = 1, Value do
+		fireclickdetector(game:GetService("Workspace")["Toilet Paper Dispenser"].Interactable.ClickDetector)
+		end
+	end	  
+})
+
+Tab:AddToggle({
+	Name = "Spam oof sounds",
+	Default = false,
+	Callback = function(Value)
+gh = Value
+		while gh do
+		   task.wait()
+		fireclickdetector(game:GetService("Workspace").MrOof.Bighead.ClickDetector)
+		end
+	end    
+})
+
 Tab:AddDropdown({
 	Name = "Anti collision handle tools",
 	Default = "1",
