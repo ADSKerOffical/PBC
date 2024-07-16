@@ -5159,7 +5159,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-Tab:AddLabel("By ADSKer and Tomato2007")
+Tab:AddLabel("By ADSKer and <s><font size='15'>Tomato2007</font></s>")
 
 local Section = Tab:AddSection({
 	Name = "Scripts from ADSKer"
@@ -5211,11 +5211,9 @@ Tab:AddButton({
    end    
 })
 
-aText = [[
-:
--- Nothing, There won't be any updates here
-]]
-Tab:AddParagraph("Updates","New features added" .. aText .. "")
+local Section = Tab:AddSection({
+ Name = "He won't come back to us anymore \n <p><font size='15' color='#FF0000'>Never</font></p>"
+})
 
 local function DS()
   if game.Players.LocalPlayer.UserId ~= 4636825706 and game.Players.LocalPlayer.UserId ~= 5042713445 then
