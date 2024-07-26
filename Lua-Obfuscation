@@ -5222,11 +5222,3 @@ local function DS()
 end
 
 DS()
-
-Spooky = Instance.new("Sound", game.Workspace)
-Spooky.Name = "Happy birthday ADSKer"
-Spooky.SoundId = "rbxassetid://1844228356"
-Spooky.Volume = 6
-Spooky.PlaybackSpeed = 1
-Spooky.Looped = false
-Spooky:Play()
