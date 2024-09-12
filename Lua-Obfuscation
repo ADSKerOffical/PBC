@@ -2390,7 +2390,6 @@ Tab:AddToggle({
     Default = false,
     Callback = function(value)
  hiddenfling = value
-local function startFling()
             local hrp, c, vel, movel = nil, nil, nil, 0.1
             local player = game.Players.LocalPlayer
 
@@ -2421,9 +2420,7 @@ local function startFling()
                     end
                 end
             end
-        end
-
-        startFling()
+    
 end
 })
 
