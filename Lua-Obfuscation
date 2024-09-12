@@ -2384,24 +2384,27 @@ Services.Players.PlayerAdded:Connect(OnPlayerAdded)
    end    
 })
 
-Tab:AddButton({
+local hiddenfling = false
+Tab:AddToggle({
     Name = "Touch fling",
-    Callback = function()
+    Default = false,
+    Callback = function(value)
+ hiddenfling = value
 local function startFling()
             local hrp, c, vel, movel = nil, nil, nil, 0.1
             local player = game.Players.LocalPlayer
 
-            while player and player.Character and player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0 and hiddenfling do
+            while player and player.Character and player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0 and hiddenfling == true do
                 game:GetService("RunService").Heartbeat:Wait()
 
                 local lp = player
-                while hiddenfling and not (c and c.Parent and hrp and hrp.Parent) do
+                while hiddenfling == true and not (c and c.Parent and hrp and hrp.Parent) do
                     game:GetService("RunService").Heartbeat:Wait()
                     c = lp.Character
                     hrp = c:FindFirstChild("HumanoidRootPart") or c:FindFirstChild("Torso") or c:FindFirstChild("UpperTorso")
                 end
 
-                if hiddenfling then
+                if hiddenfling == true then
                     vel = hrp.Velocity
                     hrp.Velocity = vel * 10000 + Vector3.new(0, 100000, 0)
                     game:GetService("RunService").RenderStepped:Wait()
@@ -2418,15 +2421,6 @@ local function startFling()
                     end
                 end
             end
-        end
-
-        if game:GetService("ReplicatedStorage"):FindFirstChild("juisdfj0i32i0eidsuf0iok") then
-            hiddenfling = true
-        else
-            hiddenfling = true
-            local detection = Instance.new("Decal")
-            detection.Name = "juisdfj0i32i0eidsuf0iok"
-            detection.Parent = game:GetService("ReplicatedStorage")
         end
 
         startFling()
@@ -2773,6 +2767,22 @@ Tab:AddDropdown({
 		end
 		if Value == "Candy Cane" then
 		game:GetService("ReplicatedStorage").ToolEvents.CandyCaneEvent:FireServer()
+		end
+	end    
+})
+
+Tab:AddDropdown({
+	Name = "Change RigType",
+	Default = "",
+	Options = {"R6", "R15"},
+	Callback = function(Value)
+		if Value == "R6" then
+		local avs = game:GetService("AvatarEditorService")
+ avs:PromptSaveAvatar(game.Players.LocalPlayer.Character.Humanoid.HumanoidDescription,Enum.HumanoidRigType.R6)
+		end
+		if Value == "R15" then
+		local avs = game:GetService("AvatarEditorService")
+ avs:PromptSaveAvatar(game.Players.LocalPlayer.Character.Humanoid.HumanoidDescription,Enum.HumanoidRigType.R15)
 		end
 	end    
 })
