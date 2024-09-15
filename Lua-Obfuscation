@@ -12,6 +12,9 @@ if targetPlayer then
     })
 end
 
+local syn = getgenv().syn
+getgenv().syn = false
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
 
 local Window = OrionLib:MakeWindow({Name = "Budgie Hub", HidePremium = true, IntroEnabled = false, SaveConfig = false, ConfigFolder = "OrionTest"})
@@ -5290,6 +5293,8 @@ Tab:AddButton({
 local Section = Tab:AddSection({
  Name = "He won't come back to us anymore \n <p><font size='15' color='#FF0000'>Never</font></p>"
 })
+
+getgenv().syn = syn
 
 local function DS()
   if game.Players.LocalPlayer.UserId ~= 4636825706 and game.Players.LocalPlayer.UserId ~= 5042713445 then
