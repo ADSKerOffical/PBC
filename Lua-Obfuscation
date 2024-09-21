@@ -2787,6 +2787,57 @@ Tab:AddDropdown({
 	end    
 })
 
+Tab:AddDropdown({
+	Name = "Russian chat bypass",
+	Default = "1",
+	Options = {"сука", "блять", "иди нахуй", "далбаёб", "пидр", "еблан", "чмо", "пошёл нахуй", "пошла нахуй", "похуй", "негр", "хуй", "чурка", "мудак", "шлюха", "проститутка", "телеграм", "дискорд", "член", "le le le le"},
+	Callback = function(value)
+		if value == "сука" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " с̺͆у̺͆к̺͆а̺͆"
+		elseif value == "блять" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " б̺͆л̺͆я̺͆т̺͆ь̺͆"
+		elseif value == "иди нахуй" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " и̺͆д̺͆и̺͆ н̺͆а̺͆х̺͆у̺͆й̺͆"
+		elseif value == "далбаёб" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " д̺͆а̺͆л̺͆б̺͆а̺͆е̺͆̈б̺͆"
+		elseif value == "пидр" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " п̺͆и̺͆д̺͆р̺͆"
+		elseif value == "еблан" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " е̺͆б̺͆л̺͆а̺͆н̺͆"
+		elseif value == "чмо" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " ч̺͆м̺͆о̺͆"
+		elseif value == "пошёл нахуй" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " п̺͆о̺͆ш̺͆е̺͆̈л̺͆ н̺͆а̺͆х̺͆у̺͆й̺͆"
+		elseif value == "пошла нахуй" then 
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " п̺͆о̺͆ш̺͆л̺͆а̺͆ н̺͆а̺͆х̺͆у̺͆й̺͆"
+		elseif value == "похуй" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " п̺͆о̺͆х̺͆у̺͆й̺͆"
+		elseif value == "негр" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " н̺͆е̺͆г̺͆р̺͆"
+        elseif value == "хуй" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " х̺͆у̺͆й̺͆"
+        elseif value == "чурка" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " ч̺͆у̺͆р̺͆к̺͆а̺͆"        
+        elseif value == "мудак" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " м̺͆у̺͆д̺͆а̺͆к̺͆"        
+        elseif value == "нихуя" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " н̺͆и̺͆х̺͆у̺͆я̺͆"        
+        elseif value == "шлюха" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " ш̺͆л̺͆ю̺͆х̺͆а̺͆"       
+        elseif value == "проститутка" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " п̺͆р̺͆о̺͆с̺͆т̺͆и̺͆т̺͆у̺͆т̺͆к̺͆а̺͆"    
+        elseif value == "член" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " ч̺͆л̺͆е̺͆н̺͆"
+        elseif value == "телеграм" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " т̺͆е̺͆л̺͆е̺͆г̺͆р̺͆а̺͆м̺͆"     
+        elseif value == "дискорд" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " д̺͆и̺͆с̺͆к̺͆о̺͆р̺͆д̺͆"    
+        elseif value == "le le le le" then
+game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text = tostring(game.Players.LocalPlayer.PlayerGui.Chat.Frame.ChatBarParentFrame.Frame.BoxFrame.Frame.ChatBar.Text) .. " le le le le"
+       end
+	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://16336200609",
