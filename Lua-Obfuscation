@@ -5455,6 +5455,84 @@ local Section = Tab:AddSection({
  Name = "He won't come back to us anymore \n <p><font size='15' color='#FF0000'>Never</font></p>"
 })
 
+Tab:AddButton({
+ Name = "Super cola tutorial",
+ Callback = function()
+        local ScreenGui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+ScreenGui.Name = "Tutorial"
+ScreenGui.ResetOnSpawn = true
+
+local Frame = Instance.new("Frame", ScreenGui)
+Frame.Position = UDim2.new(0.2, 0, 0.3, 0)
+Frame.Size = UDim2.new(0.5, 0, 0.6, 0)
+Frame.Active = true
+Frame.Draggable = true
+Frame.BorderColor3 = Color3.new(0.5, 0.5, 0.5)
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+
+local Corner = Instance.new("UICorner", Frame)
+Corner.CornerRadius = UDim.new(0, 8)
+
+local title = Instance.new("TextLabel", Frame)
+title.Size = UDim2.new(1, 0, 0.1, 0)
+title.Position = UDim2.new(0, -0.5, 0, 0)
+title.BackgroundColor3 = Color3.new(0, 0, 0)
+title.BackgroundTransparency = 1
+title.Text = "Tutorial"
+title.TextColor3 = Color3.new(1, 1, 1)
+title.TextScaled = true
+title.Font = Enum.Font.SourceSansBold
+
+local text = Instance.new("TextLabel", Frame)
+text.Text = '1. First, we will go to Dropdown "Antis" and after that click on "Anti TrashCola"(Images are not loading)'
+text.TextScaled = true
+text.BackgroundTransparency = 1
+text.TextColor3 = Color3.new(1, 1, 1)
+text.Position = UDim2.new(0.1, 0, 0.2, 0)
+text.Size = UDim2.new(0.8, 0, 0.15, 0)
+
+local text = Instance.new("TextLabel", Frame)
+text.Size = UDim2.new(0.8, 0, 0.15, 0)
+text.Position = UDim2.new(0.1, 0, 0.35, 0)
+text.TextColor3 = Color3.new(1, 1, 1)
+text.Text = '2. Then click on the TextBox "Get TrashCola" and select from 300 to 1000 stakes and then click on the Dropdown "Anti collision handle tool" and click any function'
+text.TextScaled = true
+text.BackgroundTransparency = 1
+
+local text = Instance.new("TextLabel", Frame)
+text.Size = UDim2.new(0.8, 0, 0.15, 0)
+text.Position = UDim2.new(0.1, 0, 0.5, 0)
+text.TextColor3 = Color3.new(1, 1, 1)
+text.Text = '3. Then activate the "Grip Tools Gui Mod" button and select any coordinates for example: X1: 10; X2: 5; Y1: 2; Y2: 2; Z1: 20; Z2: 20'
+text.TextScaled = true
+text.BackgroundTransparency = 1
+
+local text = Instance.new("TextLabel", Frame)
+text.Size = UDim2.new(0.8, 0, 0.15, 0)
+text.Position = UDim2.new(0.1, 0, 0.65, 0)
+text.TextColor3 = Color3.new(1, 1, 1)
+text.Text = '4. Then click on ">" and enter the text "TrashCola" in the highest bar and click Activated and you are done'
+text.TextScaled = true
+text.BackgroundTransparency = 1
+
+local button = Instance.new("TextButton", Frame)
+button.Size = UDim2.new(0.1, 0, 0.1, 0)
+button.Text = "X"
+button.TextScaled = true
+button.BackgroundColor3 = Color3.new(0.8, 0, 0)
+button.Position = UDim2.new(0.895, -0.5, 0, 0)
+
+button.MouseButton1Click:Connect(function()
+ partTweenn2 = game:GetService("TweenService"):Create(Frame, TweenInfo.new(1, Enum.EasingStyle.Quad), {
+        Size = UDim2.new(0, 0, 0, 0)
+    })
+    partTweenn2:Play()
+    partTweenn2.Completed:Wait()
+   ScreenGui:Destroy()
+end)
+   end    
+})
+
 getgenv().syn = syn
 
 local function DS()
