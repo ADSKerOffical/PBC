@@ -5399,7 +5399,7 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-Tab:AddLabel("By ADSKer and <s><font size='15'>Tomato2007</font></s>")
+Tab:AddLabel("By ADSKer and Tomato2007")
 
 local Section = Tab:AddSection({
 	Name = "Scripts from ADSKer"
@@ -5449,10 +5449,6 @@ Tab:AddButton({
  Callback = function()
         loadstring(game:HttpGet("https://pastebin.com/raw/z6UmQaqN"))()
    end    
-})
-
-local Section = Tab:AddSection({
- Name = "He won't come back to us anymore \n <p><font size='15' color='#FF0000'>Never</font></p>"
 })
 
 Tab:AddButton({
