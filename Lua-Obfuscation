@@ -1036,6 +1036,17 @@ Tab:AddTextbox({
 	end	  
 })
 
+Tab:AddTextbox({
+	Name = "Get Orange Candies",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		for i = 1, Value do
+		game:GetService("ReplicatedStorage"):WaitForChild("GiveOrangeCandy"):FireServer()
+		end
+	end	  
+})
+
 Tab:AddToggle({
 	Name = "Spam oof sounds",
 	Default = false,
